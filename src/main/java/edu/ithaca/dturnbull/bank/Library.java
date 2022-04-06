@@ -1,3 +1,4 @@
+package edu.ithaca.dturnbull.bank;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -9,7 +10,7 @@ public class Library {
     }
     
 void addMovie(Movie newMovie){ //adds movie to allMovies
-    allMovies.add(newMovie);
+    allMovies.add(newMovie)
 }
 ArrayList getMovieList(){
     return allMovies;
