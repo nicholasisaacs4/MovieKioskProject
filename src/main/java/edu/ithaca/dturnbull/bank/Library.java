@@ -3,10 +3,11 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Library {
-    ArrayList<Movie>allMovies;
-    ArrayList<Movie>topTen;
+    ArrayList<Movie>allMovies = new ArrayList();
+    ArrayList<Movie>topTen = new ArrayList();
 
     public Library(){
+
     }
     
 void addMovie(Movie newMovie){ //adds movie to allMovies
