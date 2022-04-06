@@ -1,32 +1,8 @@
-# CS345 - Software Engineering at Ithaca College
-## Project 01 - Bank Software
+# Movie-Kiosk-Project
+## Trello
+https://trello.com/b/BSoLSwoS/moviekiosk
 
-Names:
-<< add 3-4 names here >>
+## Diagrams
+https://app.diagrams.net/#G14je_OQbj9mYrr-joYyIOrQBSY5VSZPRi
 
-Link to UML Use Case Diagram:
-<< add linkk here >>
-
-Link to UML Class Diagram:
-<< add link here >>
-
-Three Use Cases that you will implement first:
-1. -
-2. - 
-3. - 
-
-Which classes & methods do you need to implement for these use cases?
-(Indicated which team member is responsible for the implemenation)
-1. -
-2. -
-3. -
-4. -
-5. << add more as needed >>
-
-Don't forget to use Test-Driven Development (TDD)
-1. Write Class and Method Function Headers
-2. Write Tests
-3. Implement Method Functions
-
-Good Luck!
-
+Sprint #1: The purpose of sprint #1 is not about how much code you get done, it's about conceptually understanding the ins and outs of how to complete a sprint, and how to work together with your development and client teams to overcome errors when they arise. Goal In order for the kiosk class to work, there must be a library of movies. In order to have a library of movies to select from, the movie class must be fleshed out. Therefore, we are starting with the movie and library classes for sprint 1.
