@@ -29,11 +29,13 @@ public class movieTest {
         Movie movie = new Movie("The Avengers", "Joss Whedon", "Action");
         movie.setPrice();
         assertEquals(movie.getPrice(), 5);
-        for(int i = 0; i<10; i++){
+        for(int i = 0; i<9; i++){//rank=9
             movie.setRanking();
         }
+        movie.setPrice();
         assertEquals(movie.getPrice(), 10);
         movie.setRanking();
+        movie.setPrice();
         assertEquals(movie.getPrice(), 20);
         
 
