@@ -55,6 +55,7 @@ public class movieTest {
     void dateDueTest(){
         LocalDate dateRented = LocalDate.now();
         Movie movie = new Movie("Beetlejuice", "Tim Burton", "Comedy");
+        movie.setDateRented();
         movie.setRanking(); //1
         movie.setRanking(); //2
         movie.setDateDue();
