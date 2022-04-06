@@ -9,7 +9,7 @@ public class Movie{
     public double price;
     public int ranking;
     public LocalDate dateRented;
-    public LocalDate dateDue;
+    public static LocalDate dateDue;
     public LocalDate dateReturned;
 
     public Movie(String title, String director, String genre){
