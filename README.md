@@ -1,4 +1,4 @@
-# Movie-Kiosk-Project
+# Movie Kiosk Project
 ## Trello
 https://trello.com/b/BSoLSwoS/moviekiosk
 
