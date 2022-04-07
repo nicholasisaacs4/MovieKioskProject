@@ -4,10 +4,13 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Library {
-    ArrayList<Movie> allMovies = new ArrayList();
-    ArrayList<Movie> topTen = new ArrayList();
+    ArrayList<Movie> allMovies;
+    ArrayList<Movie> topTen;
 
     public Library(){
+
+        this.allMovies = new ArrayList<>();
+        this.topTen = new ArrayList<>();
 
     }
     

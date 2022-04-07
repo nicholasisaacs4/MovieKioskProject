@@ -46,8 +46,8 @@ public class Movie{
         return ranking;
     }
 
-    void setRanking(){ //when this is called, ranking should increase by 1
-        ranking++;
+    void setRanking(int rank){ //when this is called, ranking should increase by 1
+        ranking = rank;
     }
 
     void resetRanking(){ //resets ranking to zero

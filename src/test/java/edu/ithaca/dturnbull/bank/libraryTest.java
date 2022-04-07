@@ -1,7 +1,6 @@
 package edu.ithaca.dturnbull.bank;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
-
 import java.time.LocalDate;
 
 public class libraryTest {
@@ -33,50 +32,29 @@ public class libraryTest {
 
         /*RANKING MOVIES*/
         assertEquals(0, THG.getRanking()); //makes sure ranking is 0
-        THG.setRanking();
-        THG.setRanking();
-        THG.setRanking(); //THG ranking = 3
+        THG.setRanking(3); //THG ranking = 3
         assertEquals(3, THG.getRanking()); //makes sure ranking is what it should be
 
         assertEquals(0, HP.getRanking());
-        HP.setRanking();
-        HP.setRanking();
-        HP.setRanking();
-        HP.setRanking();
-        HP.setRanking();
-        HP.setRanking();
-        HP.setRanking(); //HP ranking = 7
+        HP.setRanking(7); //HP ranking = 7
         assertEquals(7, HP.getRanking());
 
-        TW.setRanking();
-        TW.setRanking();
-        TW.setRanking();
-        TW.setRanking();
-        TW.setRanking(); //TW ranking = 5
+
+        TW.setRanking(5); //TW ranking = 5
         assertEquals(5, TW.getRanking());
 
         assertEquals(0, DV.getRanking());
-        DV.setRanking();
-        DV.setRanking();
-        DV.setRanking();
-        DV.setRanking(); //DV ranking = 4
+
+        DV.setRanking(4); //DV ranking = 4
         assertEquals(4, DV.getRanking());
 
         assertEquals(0, SW.getRanking());
-        SW.setRanking();
-        SW.setRanking();
-        SW.setRanking();
-        SW.setRanking();
-        SW.setRanking();
-        SW.setRanking();
-        SW.setRanking();
-        SW.setRanking();
-        SW.setRanking();
-        SW.setRanking(); //SW ranking = 10
+
+        SW.setRanking(10); //SW ranking = 10
         assertEquals(10, SW.getRanking());
 
         assertEquals(0, TMR.getRanking());
-        TMR.setRanking(); //TMR ranking = 1
+        TMR.setRanking(1); //TMR ranking = 1
         assertEquals(1, TMR.getRanking());
 
         assertEquals(0, PJ.getRanking()); //PJ ranking = 0
@@ -84,5 +62,7 @@ public class libraryTest {
         /* SORT BY RANK TEST*/
         library.sortByRank();
         //assertEquals("[]", library.getTopTen()); //TODO: fix this when sort by rank is written
+
+        
     }
 }

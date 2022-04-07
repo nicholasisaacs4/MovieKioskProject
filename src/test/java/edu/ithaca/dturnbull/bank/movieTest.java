@@ -9,9 +9,9 @@ public class movieTest {
     @Test
     void rankingTest(){
         Movie movie = new Movie("The Nightmare Before Christmas", "Henry Selick", "Animation"); //animation isn't a genre but idk what to put here
-        movie.setRanking();
+        movie.setRanking(1);
         assertEquals(movie.getRanking(), 1);
-        movie.setRanking();
+        movie.setRanking(2);
         assertEquals(movie.getRanking(), 2);
     }
 
@@ -20,14 +20,14 @@ public class movieTest {
         Movie movie = new Movie("The Avengers", "Joss Whedon", "Action");
         movie.setPrice();
         assertEquals(movie.getPrice(), 5);
-        for(int i = 0; i<9; i++){//rank=9
-            movie.setRanking();
-        }
+        movie.setRanking(9);
         movie.setPrice();
         assertEquals(movie.getPrice(), 10);
-        movie.setRanking();
+        movie.setRanking(10);
         movie.setPrice();
         assertEquals(movie.getPrice(), 20);
+        
+
     }
 
     @Test
@@ -45,19 +45,19 @@ public class movieTest {
         LocalDate dateRented = LocalDate.now();
         Movie movie = new Movie("Beetlejuice", "Tim Burton", "Comedy");
         movie.setDateRented();
-        movie.setRanking(); //1
-        movie.setRanking(); //2
+        movie.setRanking(1); //1
+        movie.setRanking(2); //2
         movie.setDateDue();
         assertEquals(movie.getDateDue(), dateRented.plusDays(7));
 
-        movie.setRanking();//3
+        movie.setRanking(3);//3
         movie.setDateDue();
         assertEquals(movie.getDateDue(), dateRented.plusDays(4));
         
         for(int i = 0; i<10; i++){//>10
-            movie.setRanking();
+            movie.setRanking(10);
         }
         movie.setDateDue();
-        assertEquals(movie.getDateDue(), dateRented.plusDays(3));
+        assertEquals(movie.getDateDue(), dateRented.plusDays(7));
     }
 }
