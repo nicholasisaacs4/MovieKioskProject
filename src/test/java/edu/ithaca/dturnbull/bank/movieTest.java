@@ -4,15 +4,6 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.time.LocalDate;
 
 public class movieTest {
-    @Test
-    void IDTest(){
-        Movie movie = new Movie("The Fly", "David Cronenberg", "Horror");
-        movie.setIDNum();
-        assertEquals(movie.getIDNum(), 1); //TODO: change once setMovie is implemented
-        Movie movie2 = new Movie("The Thing", "John Carpenter", "Horror");
-        movie2.setIDNum();
-        assertEquals(movie2.getIDNum(), 2); //TODO: change once setMovie is implemented
-    }
 
 
     @Test
@@ -37,8 +28,6 @@ public class movieTest {
         movie.setRanking();
         movie.setPrice();
         assertEquals(movie.getPrice(), 20);
-        
-
     }
 
     @Test
