@@ -38,6 +38,17 @@ public class Library {
             allMovies.get(i+1).ranking  = key;  
         }  
 
+        if (allMovies.size()<=10){
+            for (int x = 0; x<= allMovies.size()-1; x++){
+                topTen.add(allMovies.get(x));
+            }
+        }
+        if (allMovies.size()>10){
+            for (int x = 0; x<= 10; x++){
+                topTen.add(allMovies.get(x));
+            }
+        }
+
     }
 
 }

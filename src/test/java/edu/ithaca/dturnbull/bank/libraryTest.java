@@ -2,6 +2,7 @@ package edu.ithaca.dturnbull.bank;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 public class libraryTest {
     public libraryTest(){
@@ -20,16 +21,7 @@ public class libraryTest {
         Movie SW = new Movie("Star Wars", "George Lucas", "Sci Fi");
         Movie TMR = new Movie("The Maze Runner", "Wes Ball", "Sci Fi");
         Movie PJ = new Movie("Percy Jackson", "Chris Colombus", "Sci Fi");
-
-        /* ADDING ALL MOVIES TO LIBRARY */
-        library.addMovie(THG);
-        library.addMovie(HP);
-        library.addMovie(TW);
-        library.addMovie(DV);
-        library.addMovie(SW);
-        library.addMovie(TMR);
-        library.addMovie(PJ);
-
+ 
         /*RANKING MOVIES*/
         assertEquals(0, THG.getRanking()); //makes sure ranking is 0
         THG.setRanking(3); //THG ranking = 3
@@ -59,10 +51,28 @@ public class libraryTest {
 
         assertEquals(0, PJ.getRanking()); //PJ ranking = 0
 
+        /* ADDING ALL MOVIES TO LIBRARY */
+         library.addMovie(THG);
+         library.addMovie(HP);
+         library.addMovie(TW);
+         library.addMovie(DV);
+         library.addMovie(SW);
+         library.addMovie(TMR);
+         library.addMovie(PJ);
+
+
         /* SORT BY RANK TEST*/
         library.sortByRank();
-        //assertEquals("[]", library.getTopTen()); //TODO: fix this when sort by rank is written
-
+        assertEquals(0, library.getTopTen().get(0).ranking); 
+        assertEquals(1, library.getTopTen().get(1).ranking); 
+        assertEquals(3, library.getTopTen().get(2).ranking); 
+        assertEquals(4, library.getTopTen().get(3).ranking); 
+        assertEquals(5, library.getTopTen().get(4).ranking); 
+        assertEquals(7, library.getTopTen().get(5).ranking); 
+        assertEquals(10, library.getTopTen().get(6).ranking); 
         
+
+
+
     }
 }
