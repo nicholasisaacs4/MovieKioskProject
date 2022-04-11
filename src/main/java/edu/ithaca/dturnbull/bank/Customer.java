@@ -22,8 +22,11 @@ public class Customer {
     }
 
     public static boolean isEmailValid(String email){
-        if(email.indexOf('@') == -1){  //TODO: add more
-            return false;
+        //check for special characters
+        for(int i = 0; i < email.length(); i++){
+            if (email.charAt(i) == '#' || email.charAt(i) == '!' || email.charAt(i) == '&' || email.charAt(i) == '$' || email.charAt(i) == '%' || email.charAt(i) == '^' || email.charAt(i) == '*'){
+                return false;
+            }
         }
         return true;
     }
