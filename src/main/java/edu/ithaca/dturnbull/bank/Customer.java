@@ -6,22 +6,22 @@ import java.util.List;
 public class Customer {
     ArrayList<Movie> rentedMovies;
     int IDNum;
-    String username;
+    String email;
     String password;
     double lateFees;
     List<String> transactionHistory;
     boolean accountStatus;
-    public Customer(String username, String password){
-        this.username = username;
+    public Customer(String emailIn, String password){
+        this.email = emailIn;
         this.password = password;
     }
 
-    String getUsername(){
-        return username;
+    String getEmail(){
+        return email;
     }
 
-    void setUsername(String username){
-        this.username = username;
+    void isEmailValid(String emailIn){
+        this.email = emailIn;
     }
 
     String getPassword(){
@@ -30,6 +30,13 @@ public class Customer {
 
     void setPassword(){
         this.password = password;
+    }
+
+    boolean checkPassword(String passInput){
+        if(password == passInput){
+            return true;
+        }
+        return false;
     }
 
     double getLateFees(){
