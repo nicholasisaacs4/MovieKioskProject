@@ -11,17 +11,21 @@ public class Customer {
     double lateFees;
     List<String> transactionHistory;
     boolean accountStatus;
+
     public Customer(String emailIn, String password){
         this.email = emailIn;
         this.password = password;
     }
 
-    String getEmail(){
+    public String getEmail(){
         return email;
     }
 
-    void isEmailValid(String emailIn){
-        this.email = emailIn;
+    public static boolean isEmailValid(String email){
+        if(email.indexOf('@') == -1){  //TODO: add more
+            return false;
+        }
+        return true;
     }
 
     String getPassword(){
