@@ -17,34 +17,34 @@ public class Customer {
     }
 
     String getUsername(){
-
+        return username;
     }
 
-    void setUsername(){
-
+    void setUsername(String username){
+        this.username = username;
     }
 
     String getPassword(){
-
+        return password;
     }
 
     void setPassword(){
-
+        this.password = password;
     }
 
     double getLateFees(){
-
+        return lateFees;
     }
 
     void setLateFees(){
-
+        //TODO
     }
 
     Boolean getAccountStatus(){
-
+        return accountStatus;
     }
 
     void setAccountStatus(){
-
+        //TODO
     }
 }
