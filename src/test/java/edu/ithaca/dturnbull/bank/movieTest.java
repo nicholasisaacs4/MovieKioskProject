@@ -60,4 +60,17 @@ public class movieTest {
         movie.setDateDue();
         assertEquals(movie.getDateDue(), dateRented.plusDays(7));
     }
+
+    @Test
+    void resetDateTest(){
+        LocalDate dateRented = LocalDate.now();
+        Movie movie = new Movie("Beetlejuice", "Tim Burton", "Comedy");
+        movie.setDateRented();
+        movie.setDateDue();
+        movie.setDateReturned();
+        movie.resetDates();
+        assertEquals(null, movie.getDateDue());
+        assertEquals(null, movie.getDateRented());
+        assertEquals(null, movie.getDateRented());
+    }
 }
