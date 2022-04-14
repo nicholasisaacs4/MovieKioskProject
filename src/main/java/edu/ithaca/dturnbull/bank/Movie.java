@@ -18,12 +18,17 @@ public class Movie{
         this.director=director;
     }
 
-    int getIDNum(){
-        return IDNum;
+    int getIDNum() throws NoMovieException{
+        if(Library.allMovies.size() == 0){
+            throw new NoMovieException();
+        }
+        else{
+            return IDNum;
+        }
     }
 
     void setIDNum(){
-        //get IDNum of last movie and add 1 to it
+        IDNum = Library.allMovies.size() + 1;
     }
 
     double getPrice(){
