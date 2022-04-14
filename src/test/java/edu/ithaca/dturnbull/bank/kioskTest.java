@@ -4,5 +4,22 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.time.LocalDate;
 
 class kioskTest {
+
+
+    @Test
+    void loginTest(){
+
+
+    }
+
+    @Test
+    void createAccountTest(){
+
+
+    }
+
+
+
+
     
 }
