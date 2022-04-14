@@ -27,25 +27,27 @@ public class Library {
 
     void sortByRank(){
 
-        int n = allMovies.size();  
+        ArrayList<Movie> tempMovies = allMovies;
+
+        int n = tempMovies.size();  
         for (int j = 1; j < n; j++) {  
-            int key = allMovies.get(j).ranking;  
+            int key = tempMovies.get(j).ranking;  
             int i = j-1;  
-            while ( (i > -1) && ( allMovies.get(i).ranking > key ) ) {  
-                allMovies.get(i+1).ranking = allMovies.get(i).ranking;  
+            while ( (i > -1) && ( tempMovies.get(i).ranking > key ) ) {  
+                tempMovies.get(i+1).ranking = tempMovies.get(i).ranking;  
                 i--;  
             }  
-            allMovies.get(i+1).ranking  = key;  
+            tempMovies.get(i+1).ranking  = key;  
         }  
 
-        if (allMovies.size()<=10){
-            for (int x = 0; x<= allMovies.size()-1; x++){
-                topTen.add(allMovies.get(x));
+        if (tempMovies.size()<=10){
+            for (int x = 0; x<= tempMovies.size()-1; x++){
+                topTen.add(tempMovies.get(x));
             }
         }
-        if (allMovies.size()>10){
+        if (tempMovies.size()>10){
             for (int x = 0; x<= 10; x++){
-                topTen.add(allMovies.get(x));
+                topTen.add(tempMovies.get(x));
             }
         }
 
