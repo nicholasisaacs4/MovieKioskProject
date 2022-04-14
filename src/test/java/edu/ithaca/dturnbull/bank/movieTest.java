@@ -14,7 +14,6 @@ public class movieTest {
         assertEquals(3, movie.getIDNum()); 
     }
 
-
     @Test
     void rankingTest(){
         Movie movie = new Movie("The Nightmare Before Christmas", "Henry Selick", "Animation"); //animation isn't a genre but idk what to put here

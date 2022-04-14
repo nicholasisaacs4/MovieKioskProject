@@ -23,7 +23,7 @@ public class Movie{
     }
 
     void setIDNum(){
-        //get IDNum of last movie and add 1 to it
+        IDNum = Library.allMovies.size() + 1;
     }
 
     double getPrice(){
