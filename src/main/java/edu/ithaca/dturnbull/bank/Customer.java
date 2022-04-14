@@ -1,5 +1,6 @@
 package edu.ithaca.dturnbull.bank;
 import java.time.LocalDate;
+import java.time.Period;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,8 +36,8 @@ public class Customer {
         return password;
     }
 
-    void setPassword(){
-        this.password = password;
+    void setPassword(String pass){
+        this.password = pass;
     }
 
     boolean checkPassword(String passInput){
@@ -50,8 +51,16 @@ public class Customer {
         return lateFees;
     }
 
-    void setLateFees(){
-        //TODO
+    void setLateFees(Movie thisMovie){
+        Period p = Period.between(thisMovie.getDateDue(), thisMovie.getDateReturned());
+        for(int i=0; i<p.getDays(); i++){
+            lateFees += 1.99; //1.99 per day of being late
+        }
+        if(lateFees >= thisMovie.getPrice()){
+            lateFees = thisMovie.getPrice(); //if the late fees exceed the movie price, they will be charged the movie
+            Library.removeMovie(thisMovie); //the movie is removed from the library because the customer 'bought' it
+        }
+        }
     }
 
     Boolean getAccountStatus(){
