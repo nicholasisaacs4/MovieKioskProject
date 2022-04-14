@@ -18,13 +18,8 @@ public class Movie{
         this.director=director;
     }
 
-    int getIDNum() throws NoMovieException{
-        if(Library.allMovies.size() == 0){
-            throw new NoMovieException();
-        }
-        else{
-            return IDNum;
-        }
+    int getIDNum(){
+        return IDNum;
     }
 
     void setIDNum(){
