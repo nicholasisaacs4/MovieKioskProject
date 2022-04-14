@@ -7,11 +7,21 @@ public class movieTest {
     @Test
     void IDTest(){
         Movie movie = new Movie("title", "director", "genre");
+        Library library = new Library();
+        
+        library.allMovies.add(movie);
+        movie.setIDNum();
         assertEquals(1, movie.getIDNum()); 
+       
         Movie movie2 = new Movie("title", "director", "genre");
+        library.allMovies.add(movie2);
+        movie.setIDNum();
         assertEquals(2, movie.getIDNum()); 
         Movie movie3 = new Movie("title", "director", "genre");
+        library.allMovies.add(movie3);
+        movie.setIDNum();
         assertEquals(3, movie.getIDNum()); 
+    
     }
 
 

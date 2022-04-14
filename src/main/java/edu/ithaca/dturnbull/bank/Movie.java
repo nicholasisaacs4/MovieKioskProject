@@ -11,6 +11,7 @@ public class Movie{
     public LocalDate dateRented;
     public static LocalDate dateDue;
     public LocalDate dateReturned;
+    private static int IDCounter = 1;
 
     public Movie(String title, String director, String genre){
         this.title=title;
@@ -23,7 +24,8 @@ public class Movie{
     }
 
     void setIDNum(){
-        IDNum = Library.allMovies.size() + 1;
+            IDNum = IDCounter;
+            IDCounter += 1;
     }
 
     double getPrice(){
