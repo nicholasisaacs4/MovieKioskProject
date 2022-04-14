@@ -73,4 +73,15 @@ public class movieTest {
         assertEquals(null, movie.getDateRented());
         assertEquals(null, movie.getDateRented());
     }
+
+    @Test 
+    void resetRankingTest(){
+
+        Movie movie = new Movie("Beetlejuice", "Tim Burton", "Comedy");
+        movie.setRanking(9);
+        assertEquals(9, movie.getRanking());
+        movie.resetRanking();
+        assertEquals(0, movie.getRanking());
+    }
+
 }
