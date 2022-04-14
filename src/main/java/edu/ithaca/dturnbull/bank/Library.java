@@ -25,6 +25,13 @@ public class Library {
         return topTen;
     }   
 
+    void removeMovie(Movie movie){ //removes movie from allMovies
+        if(allMovies.contains(movie)){
+            allMovies.remove(movie); //removes the movie from library
+        }
+        else new NoMovieException("Movie not in library");
+    }
+
     void sortByRank(){
 
         int n = allMovies.size();  

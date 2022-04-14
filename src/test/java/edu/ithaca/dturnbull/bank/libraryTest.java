@@ -8,6 +8,17 @@ public class libraryTest {
     public libraryTest(){
        
     }
+
+    @Test
+    void addAndRemoveMovieTest(){
+        Library library = new Library();
+        Movie movie1 = new Movie("title", "director", "genre");
+        library.addMovie(movie1);
+        assertEquals(library.allMovies.contains(movie1), true);
+        library.removeMovie(movie1);
+        assertEquals(library.allMovies.contains(movie1), false);
+    }
+
     @Test
     void sortByRankTest(){ 
         /*INTEGRATION TEST: Tests movie (setRanking) and library (sortByRank) methods */

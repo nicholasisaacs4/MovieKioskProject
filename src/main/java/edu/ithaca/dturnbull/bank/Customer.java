@@ -13,6 +13,7 @@ public class Customer {
     List<String> transactionHistory;
     static boolean accountStatus;
 
+
     public Customer(String emailIn, String password){
         this.email = emailIn;
         this.password = password;
