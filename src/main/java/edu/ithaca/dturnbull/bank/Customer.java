@@ -11,7 +11,7 @@ public class Customer {
     String password;
     double lateFees;
     List<String> transactionHistory;
-    boolean accountStatus;
+    static boolean accountStatus;
 
     public Customer(String emailIn, String password){
         this.email = emailIn;
@@ -59,15 +59,25 @@ public class Customer {
         if(lateFees >= thisMovie.getPrice()){
             lateFees = thisMovie.getPrice(); //if the late fees exceed the movie price, they will be charged the movie
             Library.removeMovie(thisMovie); //the movie is removed from the library because the customer 'bought' it
+            Customer.setAccountStatus(0);
         }
-        }
+        if(p.getDays() <= 0){
+            Customer.setAccountStatus(1); //paid on time
+        } 
     }
 
     Boolean getAccountStatus(){
         return accountStatus;
     }
 
-    void setAccountStatus(){
-        //TODO
+    static void setAccountStatus(int num){ //specific numbers will be entered to set account status type
+        if(num ==0){
+            accountStatus = false; //too many late fees
+            throw new IllegalArgumentException("Account Frozen: too many late fees");
+        }
+        if(num ==1){
+            accountStatus = true;
+        }
+        else throw new IllegalArgumentException("please enter number 0 or 1");
     }
 }
