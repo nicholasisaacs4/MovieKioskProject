@@ -5,12 +5,16 @@ import java.time.LocalDate;
 
 public class customerTest {
     @Test
+    void IDNumTest(){
+        
+    }
+    @Test
     void rentedMoviesTest(){
 
     }
 
     @Test
     void transactionHistoryTest(){
-        
+
     }
 }
