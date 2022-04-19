@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Library {
-    ArrayList<Movie> allMovies;
+    static ArrayList<Movie> allMovies;
     ArrayList<Movie> topTen;
 
     public Library(){
@@ -25,7 +25,7 @@ public class Library {
         return topTen;
     }   
 
-    void removeMovie(Movie movie){ //removes movie from allMovies
+    static void removeMovie(Movie movie){ //removes movie from allMovies
         if(allMovies.contains(movie)){
             allMovies.remove(movie); //removes the movie from library
         }

@@ -60,9 +60,9 @@ public class Customer {
         if(lateFees >= thisMovie.getPrice()){
             lateFees = thisMovie.getPrice(); //if the late fees exceed the movie price, they will be charged the movie
             Library.removeMovie(thisMovie); //the movie is removed from the library because the customer 'bought' it
-            Customer.setAccountStatus(0);
+            Customer.setAccountStatus(0); //too many late fees
         }
-        if(p.getDays() <= 0){
+        else if(p.getDays() <= 0){
             Customer.setAccountStatus(1); //paid on time
         } 
     }

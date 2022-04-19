@@ -17,4 +17,21 @@ public class customerTest {
     void transactionHistoryTest(){
 
     }
+
+    @Test
+    void lateFeesTest(){ //started but this won't work right now
+        Customer cus1 = new Customer();
+        Movie movie2 = new Movie("title", "director", "genre");
+        Library newLibrary = new Library();
+        newLibrary.addMovie(movie2);
+
+        cus1.rent(movie2);
+
+        cus1.return(movie2);
+    }
+
+    @Test
+    void isEmailValidTest(){
+
+    }
 }
