@@ -12,11 +12,21 @@ public class Customer {
     double lateFees;
     List<String> transactionHistory;
     static boolean accountStatus;
+    private static int IDCounter = 1;
 
 
     public Customer(String emailIn, String password){
         this.email = emailIn;
         this.password = password;
+    }
+
+    void setIDNum(){
+        IDNum = IDCounter;
+        IDCounter += 1;
+    }
+
+    int getIDNum(){
+        return IDNum;
     }
 
     public String getEmail(){
