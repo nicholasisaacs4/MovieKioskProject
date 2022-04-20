@@ -15,12 +15,12 @@ public class movieTest {
        
         Movie movie2 = new Movie("title", "director", "genre");
         library.allMovies.add(movie2);
-        movie.setIDNum();
-        assertEquals(2, movie.getIDNum()); 
+        movie2.setIDNum();
+        assertEquals(2, movie2.getIDNum()); 
         Movie movie3 = new Movie("title", "director", "genre");
         library.allMovies.add(movie3);
-        movie.setIDNum();
-        assertEquals(3, movie.getIDNum()); 
+        movie3.setIDNum();
+        assertEquals(3, movie3.getIDNum()); 
     
     }
 
