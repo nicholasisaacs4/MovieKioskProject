@@ -73,5 +73,14 @@ public class KioskUI {
         Movie newMovie = new Movie(title, director, genre);
         current_customer.rentedMovies.add(newMovie);
 
-    }  
+    } 
+    
+    public void addToRentedMovies(Customer customer, Movie movie){
+        customer.rentedMovies.add(movie);
+    }
+
+    public void addToTransactionHistory(Customer customer, Movie movie, String action){
+        if(action == "rent"){
+            double price = movie.getPrice();
+            customer.transactionHistory.add("");
 }
