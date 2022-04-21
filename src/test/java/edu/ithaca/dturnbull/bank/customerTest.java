@@ -60,7 +60,7 @@ public class customerTest {
 
     @Test
     void lateFeesTest(){ //started but this won't work right now
-        Customer cus1 = new Customer();
+        Customer cus1 = new Customer("first@last.com", "password");
         Movie movie2 = new Movie("title", "director", "genre");
         Library newLibrary = new Library();
         newLibrary.addMovie(movie2);
@@ -72,6 +72,7 @@ public class customerTest {
 
     @Test
     void isEmailValidTest(){
-
+        assertTrue(Customer.isEmailValid( "a@b.com"));   // valid email address
+        assertFalse( Customer.isEmailValid("")); //invalid email 
     }
 }
