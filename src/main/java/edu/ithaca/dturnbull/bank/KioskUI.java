@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 public class KioskUI {
 
+
+    Customer current_customer;
     ArrayList<Customer> customers;
 
 
@@ -11,25 +13,23 @@ public class KioskUI {
         this.customers = new ArrayList<>();
     }
 
-    public String login(String email, String password){
+    public void login(String email, String password){
 
-        for(int x= 0; x<= customers.size()-1; x++){
+        if(customers.size() > 0){
+            for(int x= 0; x<= customers.size()-1; x++){
 
-            if(customers.get(x).email == email){
-                //email passes 
-                if (customers.get(x).password == password){
-                    
-                    return("Logged in");
-                    
+                if(customers.get(x).email == email){
+                    //email passes 
+                    if (customers.get(x).password == password){
+
+                        current_customer = customers.get(x);
+                        
+                    }
                 }
-
-                return("Log in fail");
             }
-
-            return("Log in fail");
+        }else{
+            throw new IllegalArgumentException("login failed");
         }
-
-        return("Log in fail");
 
     }
 
@@ -39,6 +39,45 @@ public class KioskUI {
         customers.add(newCust);
 
     }
+
+
+    public void payLateFees(){
+
+        if (current_customer.lateFees > 0){
+            current_customer.lateFees = 0;
+        }else{
+
+            throw new IllegalArgumentException("No Late fees");
+        }
+
+    }
+
+    public void returnMovie(int movieID){
+
+        if(current_customer.rentedMovies.size()>0){
+
+            for (int x = 0; x<= current_customer.rentedMovies.size(); x++){
+               if (current_customer.rentedMovies.get(x).IDNum == movieID){
+                 current_customer.rentedMovies.remove(x);
+               }
+            }
+
+        } else{
+
+            throw new IllegalArgumentException("No Movies rented");
+        }
+
+
+    }
+
+    public void rent(String title, String director, String genre){
+
+        Movie newMovie = new Movie(title, director, genre);
+        current_customer.rentedMovies.add(newMovie);
+        
+    }
+
+
 
     
 }
