@@ -29,6 +29,14 @@ public class Customer {
         return IDNum;
     }
 
+    List<String> getTransactionHistory()[
+        return transactionHistory;
+    }
+
+    ArrayList<Movie> getRentedMovies(){
+        return rentedMovies;
+    }
+
     public String getEmail(){
         return email;
     }
