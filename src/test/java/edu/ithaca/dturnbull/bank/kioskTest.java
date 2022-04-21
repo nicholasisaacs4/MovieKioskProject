@@ -26,8 +26,22 @@ class kioskTest {
     void loginTest(){
 
 
-        
-    
+    }
+
+    @Test
+    void payLateFeesTest(){
+
+
+    }
+
+    @Test
+    void returnMovieTest(){
+
+
+    }
+
+    @Test
+    void rentTest(){
 
 
     }

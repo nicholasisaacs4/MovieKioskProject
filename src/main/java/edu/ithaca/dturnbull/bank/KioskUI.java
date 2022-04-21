@@ -66,18 +66,12 @@ public class KioskUI {
 
             throw new IllegalArgumentException("No Movies rented");
         }
-
-
     }
 
     public void rent(String title, String director, String genre){
 
         Movie newMovie = new Movie(title, director, genre);
         current_customer.rentedMovies.add(newMovie);
-        
-    }
 
-
-
-    
+    }  
 }
