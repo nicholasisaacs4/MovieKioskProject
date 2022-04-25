@@ -82,8 +82,8 @@ public class KioskUI {
     /*
      ACTION KEY
      rent - "rent"
-     pay late fee - "lf"
      return - "return"
+     pay late fee - "lf"
     */
     public void addToTransactionHistory(Customer customer, Movie movie, String action){
         if(action == "rent"){
