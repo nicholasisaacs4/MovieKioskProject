@@ -84,8 +84,8 @@ public class Movie{
         return dateReturned;
     }
 
-    void setDateReturned(){ //this will be called on the day it's returned
-        dateReturned = LocalDate.now();
+    void setDateReturned(LocalDate returnDate){ //usually will call the same date
+        dateReturned = returnDate;
     }
 
     void resetDates(){ //called after movie is returned

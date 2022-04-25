@@ -80,7 +80,7 @@ public class Customer {
             Library.removeMovie(thisMovie); //the movie is removed from the library because the customer 'bought' it
             Customer.setAccountStatus(0); //too many late fees
         }
-        else if(p.getDays() <= 0){
+        else{
             Customer.setAccountStatus(1); //paid on time
         } 
     }

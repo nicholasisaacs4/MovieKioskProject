@@ -89,6 +89,6 @@ public class movieTest {
         movie.resetDates();
         assertEquals(null, movie.getDateDue());
         assertEquals(null, movie.getDateRented());
-        assertEquals(null, movie.getDateRented());
+        assertEquals(null, movie.getDateReturned());
     }
 }
