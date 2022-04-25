@@ -64,8 +64,8 @@ public class customerTest {
         Movie movie2 = new Movie("title", "director", "genre");
         Library newLibrary = new Library();
         newLibrary.addMovie(movie2);
-
-        cus1.rent(movie2);
+        
+        movie2.setDueDate(localDate 1/1/1999);
 
         cus1.return(movie2);
     }
