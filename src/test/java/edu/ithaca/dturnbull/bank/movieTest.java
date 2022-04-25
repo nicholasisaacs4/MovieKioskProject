@@ -85,7 +85,7 @@ public class movieTest {
         Movie movie = new Movie("Beetlejuice", "Tim Burton", "Comedy");
         movie.setDateRented(LocalDate.now());
         movie.setDateDue();
-        movie.setDateReturned();
+        movie.setDateReturned(LocalDate.now());
         movie.resetDates();
         assertEquals(null, movie.getDateDue());
         assertEquals(null, movie.getDateRented());

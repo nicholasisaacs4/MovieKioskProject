@@ -65,9 +65,10 @@ public class customerTest {
         Library newLibrary = new Library();
         newLibrary.addMovie(movie2);
         
-        movie2.setDueDate(localDate 1/1/1999);
-
-        cus1.return(movie2);
+        movie2.setDateRented(LocalDate.of(1999, 8, 30)); //sets due date
+        movie2.setRanking(10);
+        movie2.setDateDue(); //sets due date to 
+        movie2.setDateReturned();
     }
 
     @Test
