@@ -79,8 +79,21 @@ public class KioskUI {
         customer.rentedMovies.add(movie);
     }
 
+    /*
+     ACTION KEY
+     rent - "rent"
+     pay late fee - "lf"
+     return - "return"
+    */
     public void addToTransactionHistory(Customer customer, Movie movie, String action){
         if(action == "rent"){
-            double price = movie.getPrice();
-            customer.transactionHistory.add("");
+            customer.transactionHistory.add("rented Movie#"+movie.getIDNum()+" on "+LocalDate.now()+" for $"+movie.getPrice());
+        }
+        else if(action == "return"){;
+            customer.transactionHistory.add("returned Movie#"+movie.getIDNum()+" on "+LocalDate.now());
+        }
+        else if(action == "lf"){
+            customer.transactionHistory.add("paid late fees on "+LocalDate.now()+" for $"+movie.getPrice());
+        }
+    }
 }
