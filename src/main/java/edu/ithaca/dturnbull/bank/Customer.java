@@ -29,7 +29,7 @@ public class Customer {
         return IDNum;
     }
 
-    List<String> getTransactionHistory()[
+    List<String> getTransactionHistory(){
         return transactionHistory;
     }
 

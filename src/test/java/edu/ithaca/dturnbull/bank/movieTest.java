@@ -51,18 +51,18 @@ public class movieTest {
     @Test
     void dateRentedTest(){
         Movie movie = new Movie("Star Wars", "George Lucas", "Sci-fi");
-        movie.setDateRented();
+        movie.setDateRented(LocalDate.now());
         assertEquals(movie.getDateRented(), LocalDate.now());
         Movie movie2 = new Movie("Alien", "Ridley Scott", "Horror");
-        movie2.setDateRented();
-        assertEquals(movie2.getDateRented(), LocalDate.now());
+        movie2.setDateRented(LocalDate.of(1999, 8, 30));
+        assertEquals(movie2.getDateRented(), LocalDate.of(1999, 8, 30));
     }
 
     @Test
     void dateDueTest(){
         LocalDate dateRented = LocalDate.now();
         Movie movie = new Movie("Beetlejuice", "Tim Burton", "Comedy");
-        movie.setDateRented();
+        movie.setDateRented(LocalDate.now());
         movie.setRanking(1); //1
         movie.setRanking(2); //2
         movie.setDateDue();
@@ -83,7 +83,7 @@ public class movieTest {
     void resetDateTest(){
         LocalDate dateRented = LocalDate.now();
         Movie movie = new Movie("Beetlejuice", "Tim Burton", "Comedy");
-        movie.setDateRented();
+        movie.setDateRented(LocalDate.now());
         movie.setDateDue();
         movie.setDateReturned();
         movie.resetDates();

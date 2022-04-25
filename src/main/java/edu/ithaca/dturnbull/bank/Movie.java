@@ -60,8 +60,8 @@ public class Movie{
         return dateRented;
     }
 
-    void setDateRented(){ //this will be called on the day it's rented
-        dateRented = LocalDate.now();
+    void setDateRented(LocalDate thisDate){ //this will be called on the day it's rented
+        dateRented = thisDate;
     }
 
     static LocalDate getDateDue(){
