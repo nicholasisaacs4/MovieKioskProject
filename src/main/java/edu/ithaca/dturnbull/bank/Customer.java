@@ -48,6 +48,9 @@ public class Customer {
                 return false;
             }
         }
+        if(email.length() == 0){
+            return false;
+        }
         return true;
     }
 
@@ -72,11 +75,14 @@ public class Customer {
 
     void setLateFees(Movie thisMovie){
         Period p = Period.between(thisMovie.getDateDue(), thisMovie.getDateReturned());
-        lateFees = p.getDays()*1.99; //1.99 per day
-        if(lateFees <= 0){ //if negative number/0 this means returned early or on time
+        if(p.getDays() <= 0){ //if negative number or 0 this means returned early or on time
             lateFees = 0;
+        } 
+        else{
+            lateFees = p.getDays()*1.99; //1.99 per day
         }
-        else if(lateFees >= thisMovie.getPrice()){
+
+        if(lateFees >= thisMovie.getPrice()){
             lateFees = thisMovie.getPrice(); //if the late fees exceed the movie price, they will be charged the movie
             Library.removeMovie(thisMovie); //the movie is removed from the library because the customer 'bought' it
         }

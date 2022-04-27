@@ -97,6 +97,6 @@ public class customerTest {
     @Test
     void isEmailValidTest(){
         assertTrue(Customer.isEmailValid( "a@b.com"));   // valid email address
-        assertFalse( Customer.isEmailValid("")); //invalid email 
+        assertFalse(Customer.isEmailValid("")); //invalid email 
     }
 }
