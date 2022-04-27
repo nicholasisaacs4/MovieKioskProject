@@ -64,7 +64,7 @@ public class Movie{
         dateRented = thisDate;
     }
 
-    static LocalDate getDateDue(){
+    LocalDate getDateDue(){
         return dateDue;
     }
 
