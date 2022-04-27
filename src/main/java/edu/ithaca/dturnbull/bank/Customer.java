@@ -18,6 +18,7 @@ public class Customer {
     public Customer(String emailIn, String password){
         this.email = emailIn;
         this.password = password;
+        lateFees = 0;
     }
 
     void setIDNum(){
@@ -78,10 +79,9 @@ public class Customer {
         if(lateFees >= thisMovie.getPrice()){
             lateFees = thisMovie.getPrice(); //if the late fees exceed the movie price, they will be charged the movie
             Library.removeMovie(thisMovie); //the movie is removed from the library because the customer 'bought' it
-            Customer.setAccountStatus(0); //too many late fees
         }
         else{
-            Customer.setAccountStatus(1); //paid on time
+            lateFees = 0; //paid on time
         } 
     }
 
@@ -91,12 +91,16 @@ public class Customer {
 
     void setAccountStatus(int num){ //specific numbers will be entered to set account status type
         if(num ==0){
-            accountStatus = false; //too many late fees
+            accountStatus = false; //bad status
             throw new IllegalArgumentException("Account Frozen: too many late fees");
         }
-        if(num ==1){
-            accountStatus = true;
+        else if(num ==1){
+            accountStatus = false; //bad password (in kiosk)
+            throw new IllegalArgumentException("Account Frozen: password entered incorrectly");
         }
-        else throw new IllegalArgumentException("please enter number 0 or 1");
+        else if(num ==2){
+            accountStatus = true; //good status
+        }
+        else throw new IllegalArgumentException("please enter number between 0 and 2");
     }
 }

@@ -75,27 +75,23 @@ public class customerTest {
         movie2.setRanking(10);
         movie2.setDateDue(); //sets due date to 3 days after
         movie2.setDateReturned(LocalDate.of(1999, 9, 1)); //returned before due date
-        cus1.setAccountStatus(1);
         cus1.setLateFees(movie2);
         assertEquals(0, cus1.getLateFees()); //returned on time so 0 late fees
 
         //Movie 3: Returned a few days late
         
-        movie2.setDateRented(LocalDate.of(1999, 8, 30)); //sets due date
-        movie2.setRanking(10);
-        movie2.setDateDue(); //sets due date to 3 days after
-        movie2.setDateReturned(LocalDate.of(1999, 9, 4)); //returned 2 days after due date
-        cus1.setAccountStatus(1);
+        movie3.setDateRented(LocalDate.of(1999, 8, 30)); //sets due date
+        movie3.setRanking(10);
+        movie3.setDateDue(); //sets due date to 3 days after
+        movie3.setDateReturned(LocalDate.of(1999, 9, 4)); //returned 2 days after due date
         cus1.setLateFees(movie3);
         assertEquals(3.98, cus1.getLateFees());
 
         //Movie 4: Returned way late & movie is bought out
-        cus1.setAccountStatus(1);
         movie4.setDateRented(LocalDate.of(1999, 8, 30)); //sets due date
         movie4.setRanking(10);
         movie4.setDateDue(); //sets due date to 3 days after
         movie4.setDateReturned(LocalDate.of(1999, 12, 30)); //returned 4 months after due date
-        cus1.setAccountStatus(1);
         cus1.setLateFees(movie4);
         assertEquals(20, cus1.getLateFees());
     }
