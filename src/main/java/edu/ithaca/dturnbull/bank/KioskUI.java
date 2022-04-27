@@ -77,7 +77,14 @@ public class KioskUI {
         Scanner scanner = new Scanner(System.in);
         String userChoice = scanner.nextLine();
         if(userChoice.equals("1")){
-            
+            System.out.println("Enter title:");
+            Scanner scanner2 = new Scanner(System.in);
+            String title = scanner2.nextLine();
+            for(Movie movie:Library.allMovies){
+                if(movie.title.equals(title)){
+                    rent(movie);
+                }
+            }
         }
     }
     
