@@ -72,10 +72,11 @@ public class Customer {
 
     void setLateFees(Movie thisMovie){
         Period p = Period.between(thisMovie.getDateDue(), thisMovie.getDateReturned());
-        for(int i=0; i<p.getDays(); i++){
-            lateFees += 1.99; //1.99 per day of being late
+        lateFees = p.getDays()*1.99; //1.99 per day
+        if(lateFees <= 0){ //if negative number/0 this means returned early or on time
+            lateFees = 0;
         }
-        if(lateFees >= thisMovie.getPrice()){
+        else if(lateFees >= thisMovie.getPrice()){
             lateFees = thisMovie.getPrice(); //if the late fees exceed the movie price, they will be charged the movie
             Library.removeMovie(thisMovie); //the movie is removed from the library because the customer 'bought' it
         }
