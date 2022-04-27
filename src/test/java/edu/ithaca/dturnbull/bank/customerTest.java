@@ -69,8 +69,7 @@ public class customerTest {
         newLibrary.addMovie(movie3);
         newLibrary.addMovie(movie4);
         
-        //Movie 2: Returned on Time 
-        
+        //Movie 2: Returned on time 
         movie2.setDateRented(LocalDate.of(1999, 8, 30)); //sets due date
         movie2.setRanking(10);
         movie2.setDateDue(); //sets due date to 3 days after
@@ -79,7 +78,6 @@ public class customerTest {
         assertEquals(0, cus1.getLateFees()); //returned on time so 0 late fees
 
         //Movie 3: Returned a few days late
-        
         movie3.setDateRented(LocalDate.of(1999, 8, 30)); //sets due date
         movie3.setRanking(10);
         movie3.setDateDue(); //sets due date to 3 days after
