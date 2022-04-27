@@ -89,7 +89,7 @@ public class Customer {
         return accountStatus;
     }
 
-    static void setAccountStatus(int num){ //specific numbers will be entered to set account status type
+    void setAccountStatus(int num){ //specific numbers will be entered to set account status type
         if(num ==0){
             accountStatus = false; //too many late fees
             throw new IllegalArgumentException("Account Frozen: too many late fees");
