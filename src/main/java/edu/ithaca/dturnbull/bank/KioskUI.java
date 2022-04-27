@@ -1,6 +1,7 @@
 package edu.ithaca.dturnbull.bank;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class KioskUI {
 
@@ -73,7 +74,11 @@ public class KioskUI {
     //kioskUI
     public void rent(){
         System.out.println("Search by:\n1.\ttitle\n2.\tdirector\n3.\tgenre\n4.\tmost popular");
-        
+        Scanner scanner = new Scanner(System.in);
+        String userChoice = scanner.nextLine();
+        if(userChoice.equals("1")){
+            
+        }
     }
     
     //for testing
@@ -96,7 +101,7 @@ public class KioskUI {
         customer.transactionHistory.add("paid late fees on "+LocalDate.now()+" for $"+customer.lateFees);
     }
     public void addToTransactionHistory(Customer customer, Movie movie, String action){
-        if(action == "rent"){
+        if(action.equals("rent")){
             customer.transactionHistory.add("rented Movie#"+movie.getIDNum()+" on "+LocalDate.now()+" for $"+movie.getPrice());
         }
         else{
