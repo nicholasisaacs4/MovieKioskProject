@@ -44,7 +44,9 @@ public class KioskUI {
     public void payLateFees(){
 
         if (current_customer.lateFees > 0){
+            addToTransactionHistory(current_customer);
             current_customer.lateFees = 0;
+            
         }else{
 
             throw new IllegalArgumentException("No Late fees");
@@ -67,9 +69,9 @@ public class KioskUI {
             throw new IllegalArgumentException("No Movies rented");
         }
     }
-
+    
     public void rent(String title, String director, String genre){
-
+        //create search function
         Movie newMovie = new Movie(title, director, genre);
         current_customer.rentedMovies.add(newMovie);
 
@@ -83,17 +85,16 @@ public class KioskUI {
      ACTION KEY
      rent - "rent"
      return - "return"
-     pay late fee - "lf"
     */
+    public void addToTransactionHistory(Customer customer){
+        customer.transactionHistory.add("paid late fees on "+LocalDate.now()+" for $"+customer.lateFees);
+    }
     public void addToTransactionHistory(Customer customer, Movie movie, String action){
         if(action == "rent"){
             customer.transactionHistory.add("rented Movie#"+movie.getIDNum()+" on "+LocalDate.now()+" for $"+movie.getPrice());
         }
-        else if(action == "return"){;
+        else{
             customer.transactionHistory.add("returned Movie#"+movie.getIDNum()+" on "+LocalDate.now());
-        }
-        else if(action == "lf"){
-            customer.transactionHistory.add("paid late fees on "+LocalDate.now()+" for $"+movie.getPrice());
         }
     }
 }
