@@ -18,7 +18,6 @@ public class Customer {
     public Customer(String emailIn, String password){
         this.email = emailIn;
         this.password = password;
-        lateFees = 0;
     }
 
     void setIDNum(){
@@ -80,9 +79,6 @@ public class Customer {
             lateFees = thisMovie.getPrice(); //if the late fees exceed the movie price, they will be charged the movie
             Library.removeMovie(thisMovie); //the movie is removed from the library because the customer 'bought' it
         }
-        else{
-            lateFees = 0; //paid on time
-        } 
     }
 
     Boolean getAccountStatus(){
