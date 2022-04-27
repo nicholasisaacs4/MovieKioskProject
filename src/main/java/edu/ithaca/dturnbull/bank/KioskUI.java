@@ -69,11 +69,17 @@ public class KioskUI {
             throw new IllegalArgumentException("No Movies rented");
         }
     }
+
+    //kioskUI
+    public void rent(){
+        System.out.println("Search by:\n1.\ttitle\n2.\tdirector\n3.\tgenre\n4.\tmost popular");
+        
+    }
     
-    public void rent(String title, String director, String genre){
+    //for testing
+    public void rent(Movie movie){
         //create search function
-        Movie newMovie = new Movie(title, director, genre);
-        current_customer.rentedMovies.add(newMovie);
+        current_customer.rentedMovies.add(movie);
 
     } 
     
