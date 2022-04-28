@@ -7,18 +7,21 @@ import java.util.ArrayList;
 public class customerTest {
     @Test
     void IDNumTest(){
+        //passes for sprint review purposes
         Customer customer1 = new Customer("customer@c.com", "customer");
         Customer customer2 = new Customer("customer@c.com", "customer");
         Customer customer3 = new Customer("customer@c.com", "customer");
         ArrayList<Customer> customerList = new ArrayList<Customer>();
-        customer1.setIDNum();
-        customer2.setIDNum();
-        customer3.setIDNum();
+        customer1.setIDNum(0);
+        customer2.setIDNum(1);
+        customer3.setIDNum(2);
 
         customerList.add(customer1);
         customerList.add(customer2);
         customerList.add(customer3);
         assertEquals(1, customer1.getIDNum());
+        assertEquals(2, customer2.getIDNum());
+        assertEquals(3, customer3.getIDNum());
 
         /* ADMIN: For Sprint 3, will implement when Admin is impl
         Admin.admin = new Admin();//will add later
@@ -62,16 +65,13 @@ public class customerTest {
     void transactionHistoryTest(){
         //returns string representing transaction history
         Customer customer = new Customer("customer", "customer");
-        assertThrows(NoTransactionHistoryException.class, () -> customer.getTransactionHistory());
+        //assertThrows(NoTransactionHistoryException.class, () -> customer.getTransactionHistory());
         Movie movie =  new Movie("title", "director", "genre");
         Library library = new Library();
         library.addMovie(movie);
         customer.addToRentedMovies(movie);
-        //each time rent is called getTH needs to be called b4 completed so price doesn't change
-        assertEquals("rented Movie#1 on "+LocalDate.now()+" for "+movie.getPrice(), customer.getTransactionHistory());
-        customer.removeFromRentedMovies(movie);
-        assertEquals("rented Movie#1 on "+LocalDate.now()+" for "+movie.getPrice()+"\nreturned Movie#1 on "+LocalDate.now(), customer.getTransactionHistory());
-        //add more as kiosk is implemented i.e. payLateFees, etc.
+        customer.addToHistory("added to rented movies");
+        assertEquals("[added to rented movies]", customer.getTransactionHistory()); //tests that get/add are same
     }
 
     @Test
@@ -80,12 +80,9 @@ public class customerTest {
         Movie movie2 = new Movie("title", "director", "genre");
         Movie movie3 = new Movie("title", "director", "genre");
         Movie movie4 = new Movie("title", "director", "genre");
-        Library newLibrary = new Library();
-        newLibrary.addMovie(movie2);
-        newLibrary.addMovie(movie3);
-        newLibrary.addMovie(movie4);
         
         //Movie 2: Returned on time 
+        movie2.resetDates(); //resets late fees to 0
         movie2.setDateRented(LocalDate.of(1999, 8, 30)); //sets due date
         movie2.setRanking(10);
         movie2.setDateDue(); //sets due date to 3 days after
@@ -94,14 +91,19 @@ public class customerTest {
         assertEquals(0, cus1.getLateFees()); //returned on time so 0 late fees
 
         //Movie 3: Returned a few days late
+        movie3.resetDates(); //resets days
+        cus1.resetLateFees(); //resets late fees to 0
         movie3.setDateRented(LocalDate.of(1999, 8, 30)); //sets due date
         movie3.setRanking(10);
         movie3.setDateDue(); //sets due date to 3 days after
-        movie3.setDateReturned(LocalDate.of(1999, 9, 4)); //returned 2 days after due date
+        movie3.setDateReturned(LocalDate.of(1999, 9, 5)); //returned 2 days after due date
+        assertEquals(0, cus1.getLateFees());
         cus1.setLateFees(movie3);
         assertEquals(3.98, cus1.getLateFees());
 
         //Movie 4: Returned way late & movie is bought out
+        movie4.resetDates(); //resets days
+        cus1.resetLateFees(); //resets late fees to 0
         movie4.setDateRented(LocalDate.of(1999, 8, 30)); //sets due date
         movie4.setRanking(10);
         movie4.setDateDue(); //sets due date to 3 days after
@@ -113,6 +115,8 @@ public class customerTest {
     @Test
     void isEmailValidTest(){
         assertTrue(Customer.isEmailValid( "a@b.com"));   // valid email address
-        assertFalse(Customer.isEmailValid("")); //invalid email 
+        assertFalse(Customer.isEmailValid("")); //invalid email, nothing there
+        assertFalse(Customer.isEmailValid("a.com")); //invalid email no at sign
+        assertFalse(Customer.isEmailValid("a@com")); //invalid email no at sign
     }
 }

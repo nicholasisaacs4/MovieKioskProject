@@ -92,6 +92,7 @@ public class KioskUI {
     public void rent(Movie movie){
         //create search function
         current_customer.rentedMovies.add(movie);
+        current_customer.addToHistory("rented" + movie.getTitle() + "on" +LocalDate.now()+ "for" + movie.getPrice());
 
     } 
     
@@ -105,14 +106,14 @@ public class KioskUI {
      return - "return"
     */
     public void addToTransactionHistory(Customer customer){
-        customer.transactionHistory.add("paid late fees on "+LocalDate.now()+" for $"+customer.lateFees);
+        customer.addToHistory("paid late fees on "+LocalDate.now()+" for $"+customer.lateFees);
     }
     public void addToTransactionHistory(Customer customer, Movie movie, String action){
         if(action.equals("rent")){
-            customer.transactionHistory.add("rented Movie#"+movie.getIDNum()+" on "+LocalDate.now()+" for $"+movie.getPrice());
+            customer.addToHistory("rented Movie#"+movie.getIDNum()+" on "+LocalDate.now()+" for $"+movie.getPrice());
         }
         else{
-            customer.transactionHistory.add("returned Movie#"+movie.getIDNum()+" on "+LocalDate.now());
+            customer.addToHistory("returned Movie#"+movie.getIDNum()+" on "+LocalDate.now());
         }
     }
 }

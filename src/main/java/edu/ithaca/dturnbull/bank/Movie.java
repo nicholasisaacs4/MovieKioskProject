@@ -19,6 +19,18 @@ public class Movie{
         this.director=director;
     }
 
+    String getTitle(){
+        return title;
+    }
+
+    String getGenre(){
+        return genre;
+    }
+
+    String getDirector(){
+        return director;
+    }
+
     int getIDNum(){
         return IDNum;
     }
@@ -69,7 +81,7 @@ public class Movie{
     }
 
     void setDateDue(){
-        if(ranking>10){
+        if(ranking>=10){
             dateDue = dateRented.plusDays(3); //popular movie = less days
         }
         else if(ranking <10 && ranking>2){

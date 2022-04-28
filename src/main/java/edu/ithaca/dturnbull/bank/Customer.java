@@ -10,7 +10,7 @@ public class Customer {
     String email;
     String password;
     double lateFees;
-    List<String> transactionHistory;
+    static List<String> transactionHistory = new ArrayList<String>();
     static boolean accountStatus;
     private static int IDCounter = 1;
 
@@ -20,9 +20,8 @@ public class Customer {
         this.password = password;
     }
 
-    void setIDNum(){
-        IDNum = IDCounter;
-        IDCounter += 1;
+    void setIDNum(int IDCounter){ //passed through in Admin, since that holds array list of customers
+        IDNum = IDCounter+1;
     }
 
     int getIDNum(){
@@ -31,6 +30,10 @@ public class Customer {
 
     List<String> getTransactionHistory(){
         return transactionHistory;
+    }
+
+    static void addToHistory(String thisHistory){ //called when certain things are added to history (implemented more in KioskUI, Admin)
+        transactionHistory.add(thisHistory);
     }
 
     ArrayList<Movie> getRentedMovies(){
@@ -63,7 +66,7 @@ public class Customer {
                 return false;
             }
         }
-        if(email.length() == 0){
+        if(email.length() == 0 || !email.contains("@") || !email.contains(".")){
             return false;
         }
         return true;
@@ -88,18 +91,22 @@ public class Customer {
         return lateFees;
     }
 
+    void resetLateFees(){
+        lateFees = 0;
+    }
+
     void setLateFees(Movie thisMovie){
         Period p = Period.between(thisMovie.getDateDue(), thisMovie.getDateReturned());
-        if(p.getDays() <= 0){ //if negative number or 0 this means returned early or on time
+        int days = p.getDays();
+        if(days <= 0){ //if negative number or 0 this means returned early or on time
             lateFees = 0;
         } 
         else{
-            lateFees = p.getDays()*1.99; //1.99 per day
-        }
-
-        if(lateFees >= thisMovie.getPrice()){
-            lateFees = thisMovie.getPrice(); //if the late fees exceed the movie price, they will be charged the movie
-            Library.removeMovie(thisMovie); //the movie is removed from the library because the customer 'bought' it
+            lateFees = days*1.99; //1.99 per day
+            if(lateFees >= thisMovie.getPrice()){
+                lateFees = thisMovie.getPrice(); //if the late fees exceed the movie price, they will be charged the movie
+                Library.removeMovie(thisMovie); //the movie is removed from the library because the customer 'bought' it
+            }
         }
     }
 
