@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Customer {
-    ArrayList<Movie> rentedMovies;
+    ArrayList<Movie> rentedMovies = new ArrayList<Movie>();
     int IDNum;
     String email;
     String password;
@@ -34,7 +34,22 @@ public class Customer {
     }
 
     ArrayList<Movie> getRentedMovies(){
+        if(rentedMovies.size() <= 0){
+            throw new IllegalArgumentException("no rented movies");
+        }
         return rentedMovies;
+    }
+
+    void addToRentedMovies(Movie thisMovie){ //adds to rented movie list
+        rentedMovies.add(thisMovie);
+    }
+
+    void removeFromRentedMovies(Movie thisMovie){ //removes from rented movie list
+        rentedMovies.remove(thisMovie);
+    }
+
+    void resetRentedMovies(){ //clears ArrayList
+        rentedMovies.clear();
     }
 
     public String getEmail(){

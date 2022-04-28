@@ -24,21 +24,23 @@ public class customerTest {
         assertEquals(3, customer3.getIDNum()); 
     }
     @Test
-    void rentedMoviesTest(){
-        //would rent be a pass-through function??
-        Customer customer = new Customer("customer", "customer");
+    void rentedMoviesTest(){ //tests when movies are added and removed 
+        Customer customer = new Customer("customer@c.com", "customer");
         Movie movie =  new Movie("title", "director", "genre");
         Movie movie2 =  new Movie("title", "director", "genre");
         Movie movie3 =  new Movie("title", "director", "genre");
-        assertThrows(NoMovieException.class, () -> customer.getRentedMovies());
-        customer.rent(movie);
+        assertThrows(IllegalArgumentException.class, () -> customer.getRentedMovies());
         ArrayList<Movie> mArrayList = new ArrayList<>();
-        mArrayList.add(movie);
+        mArrayList.add(movie); //adds a movie
+        customer.addToRentedMovies(movie);
         assertEquals(customer.getRentedMovies(), mArrayList);
-        customer.rent(movie2);
+        customer.addToRentedMovies(movie2); //adds multiple movies
         mArrayList.add(movie2);
-        customer.rent(movie3);
+        customer.addToRentedMovies(movie3);
         mArrayList.add(movie3);
+        assertEquals(customer.getRentedMovies(), mArrayList);
+        mArrayList.remove(movie2); //removes a movie 
+        customer.removeFromRentedMovies(movie2);
         assertEquals(customer.getRentedMovies(), mArrayList);
     }
 
@@ -53,7 +55,7 @@ public class customerTest {
         customer.rent(movie);
         //each time rent is called getTH needs to be called b4 completed so price doesn't change
         assertEquals("rented Movie#1 on "+LocalDate.now()+" for "+movie.getPrice(), customer.getTransactionHistory());
-        customer.return(movie);
+        customer.returnMovie(movie);
         assertEquals("rented Movie#1 on "+LocalDate.now()+" for "+movie.getPrice()+"\nreturned Movie#1 on "+LocalDate.now(), customer.getTransactionHistory());
         //add more as kiosk is implemented i.e. payLateFees, etc.
     }
