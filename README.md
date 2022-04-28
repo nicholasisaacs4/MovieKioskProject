@@ -15,3 +15,5 @@ Retrospective: https://docs.google.com/document/d/18xd2ZytQ9TcqZIaNRxu_ZHX020KeC
 
 ### Sprint02
 Sprint #2: The purpose of sprint #2 is to get the customer and kiosk classes fully functional, so a customer should be able to rent and return a movie, as well as have movies added and removed to their account. They should also be able to log in.
+
+Review: https://docs.google.com/document/d/14edhbIC_kiIE7wqZD3qngVQD2jgJqZk0Jqe-TkwGWcg/edit
