@@ -79,7 +79,7 @@ public class KioskUI {
             rent();
         }
         else if(userChoice.equals("2")){
-            //idk what would go here
+            //idk what would go here :P
             System.out.println("Sorry for the inconvenience\nCome again soon!"); 
         }
         else{
@@ -92,22 +92,54 @@ public class KioskUI {
         System.out.println("Search by:\n1.\ttitle\n2.\tdirector\n3.\tgenre\n4.\tmost popular");
         Scanner scanner = new Scanner(System.in);
         String userChoice = scanner.nextLine();
+
+        // BY TITLE //
         if(userChoice.equals("1")){
             System.out.println("Enter title:");
-            Scanner scanner2 = new Scanner(System.in);
+            Scanner scanner2= new Scanner(System.in);
             String title = scanner2.nextLine();
             boolean movieExists = false;
+            //makes list of search results
+            ArrayList<Movie> movieList = new ArrayList<>();
             for(Movie movie:Library.allMovies){
                 if(movie.title.equals(title)){
-                    rent(movie);
+                    movieList.add(movie);
                     movieExists = true;
                 }
             }
+            //if no movies in list, initiates noMovie() (see above method)
             if (movieExists = false){
-                
-
+                noMovie();
             }
+
+            //if only one movie matches search, movie is rented
+            else if(movieList.size() == 1){
+                rent(movieList.get(0));
+            }
+
+            //if mult. movies in search result, user is asked to select the correct one
+            else{
+                System.out.println("Please make a selection:");
+                int i = 1;
+                //lists each movie that matches search param
+                for(Movie movie:movieList){
+                    System.out.println(i+".\t"+movie.title);
+                    i++;
+                }
+                Scanner scanner3= new Scanner(System.in);
+                //uses index to rent correct movie
+                int selection = Integer.parseInt(scanner3.nextLine()) -1;
+                rent(movieList.get(selection));
+                /* 
+                 if time, add failsafe for incorrect input, and add and option to cancel search
+                 make it print (i+1)".\t<- back" or something, make if statement where index+1 = rent()
+                */
+            }
+
+            
         }
+
+        
     }
     
     //for testing
