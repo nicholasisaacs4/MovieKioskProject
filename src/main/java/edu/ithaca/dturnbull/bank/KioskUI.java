@@ -71,6 +71,22 @@ public class KioskUI {
         }
     }
 
+    public void noMovie(){
+        System.out.println("No movies with this title are available.\nSearch again?\n1.\tyes\n2.\tno");
+        Scanner scanner = new Scanner(System.in);
+        String userChoice = scanner.nextLine();
+        if(userChoice.equals("1")){
+            rent();
+        }
+        else if(userChoice.equals("2")){
+            //idk what would go here
+            System.out.println("Sorry for the inconvenience\nCome again soon!"); 
+        }
+        else{
+            System.out.println("----invalid response----");
+            noMovie();
+        }
+    }
     //kioskUI
     public void rent(){
         System.out.println("Search by:\n1.\ttitle\n2.\tdirector\n3.\tgenre\n4.\tmost popular");
@@ -80,10 +96,16 @@ public class KioskUI {
             System.out.println("Enter title:");
             Scanner scanner2 = new Scanner(System.in);
             String title = scanner2.nextLine();
+            boolean movieExists = false;
             for(Movie movie:Library.allMovies){
                 if(movie.title.equals(title)){
                     rent(movie);
+                    movieExists = true;
                 }
+            }
+            if (movieExists = false){
+                
+
             }
         }
     }
