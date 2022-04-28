@@ -31,7 +31,6 @@ public class KioskUI {
         }else{
             throw new IllegalArgumentException("login failed");
         }
-
     }
 
     public void createAccount(String email, String password){
@@ -52,7 +51,6 @@ public class KioskUI {
 
             throw new IllegalArgumentException("No Late fees");
         }
-
     }
 
     public void returnMovie(int movieID){

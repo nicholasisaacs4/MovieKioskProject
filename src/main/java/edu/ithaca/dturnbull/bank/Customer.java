@@ -5,12 +5,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Customer {
-    ArrayList<Movie> rentedMovies = new ArrayList<Movie>();
+    ArrayList<Movie> rentedMovies;
     int IDNum;
     String email;
     String password;
     double lateFees;
-    static List<String> transactionHistory = new ArrayList<String>();
+    List<String> transactionHistory;
     static boolean accountStatus;
     private static int IDCounter = 1;
 
@@ -18,10 +18,12 @@ public class Customer {
     public Customer(String emailIn, String password){
         this.email = emailIn;
         this.password = password;
+        lateFees = 0;
     }
 
-    void setIDNum(int IDCounter){ //passed through in Admin, since that holds array list of customers
-        IDNum = IDCounter+1;
+    void setIDNum(){
+        IDNum = IDCounter;
+        IDCounter += 1;
     }
 
     int getIDNum(){
@@ -32,27 +34,8 @@ public class Customer {
         return transactionHistory;
     }
 
-    static void addToHistory(String thisHistory){ //called when certain things are added to history (implemented more in KioskUI, Admin)
-        transactionHistory.add(thisHistory);
-    }
-
     ArrayList<Movie> getRentedMovies(){
-        if(rentedMovies.size() <= 0){
-            throw new IllegalArgumentException("no rented movies");
-        }
         return rentedMovies;
-    }
-
-    void addToRentedMovies(Movie thisMovie){ //adds to rented movie list
-        rentedMovies.add(thisMovie);
-    }
-
-    void removeFromRentedMovies(Movie thisMovie){ //removes from rented movie list
-        rentedMovies.remove(thisMovie);
-    }
-
-    void resetRentedMovies(){ //clears ArrayList
-        rentedMovies.clear();
     }
 
     public String getEmail(){
@@ -65,9 +48,6 @@ public class Customer {
             if (email.charAt(i) == '#' || email.charAt(i) == '!' || email.charAt(i) == '&' || email.charAt(i) == '$' || email.charAt(i) == '%' || email.charAt(i) == '^' || email.charAt(i) == '*'){
                 return false;
             }
-        }
-        if(email.length() == 0 || !email.contains("@") || !email.contains(".")){
-            return false;
         }
         return true;
     }
@@ -91,23 +71,20 @@ public class Customer {
         return lateFees;
     }
 
-    void resetLateFees(){
-        lateFees = 0;
-    }
-
     void setLateFees(Movie thisMovie){
+        int count =0;
         Period p = Period.between(thisMovie.getDateDue(), thisMovie.getDateReturned());
-        int days = p.getDays();
-        if(days <= 0){ //if negative number or 0 this means returned early or on time
-            lateFees = 0;
-        } 
-        else{
-            lateFees = days*1.99; //1.99 per day
-            if(lateFees >= thisMovie.getPrice()){
-                lateFees = thisMovie.getPrice(); //if the late fees exceed the movie price, they will be charged the movie
-                Library.removeMovie(thisMovie); //the movie is removed from the library because the customer 'bought' it
-            }
+        for(int i=0; i<p.getDays(); i++){
+            lateFees += 1.99; //1.99 per day of being late
+
         }
+        if(lateFees >= thisMovie.getPrice()){
+            lateFees = thisMovie.getPrice(); //if the late fees exceed the movie price, they will be charged the movie
+            Library.removeMovie(thisMovie); //the movie is removed from the library because the customer 'bought' it
+        }
+        else{
+            lateFees = 0; //paid on time
+        } 
     }
 
     Boolean getAccountStatus(){
