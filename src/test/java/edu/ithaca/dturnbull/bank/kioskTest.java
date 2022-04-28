@@ -42,14 +42,21 @@ class kioskTest {
     @Test
     void payLateFeesTest(){
 
-    
-        
+        KioskUI testKioskUI = new KioskUI();
+        //create valid customer 
+        testKioskUI.createAccount("nicholasisaacs4@gmail.com", "password");
+        testKioskUI.login("nicholasisaacs4@gmail.com", "password");
+        testKioskUI.current_customer.lateFees = 3.00;
+        assertEquals(3.00,testKioskUI.current_customer.lateFees);
+        testKioskUI.payLateFees();
+        assertEquals(0.0,testKioskUI.current_customer.lateFees);
 
     }
 
     @Test
     void returnMovieTest(){
 
+        
 
     }
 

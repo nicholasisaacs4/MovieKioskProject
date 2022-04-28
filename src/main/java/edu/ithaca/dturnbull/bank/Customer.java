@@ -105,4 +105,37 @@ public class Customer {
         }
         else throw new IllegalArgumentException("please enter number between 0 and 2");
     }
+
+
+    void addToHistory(String messege){
+
+        if (!messege.isEmpty()){
+
+            transactionHistory.add(messege);
+
+        }else{
+
+            throw new IllegalArgumentException("empty messege");
+
+        }
+
+    }
+
+    void  addToRentedMovies(Movie movie){
+
+
+
+    }
+
+    void  removeFromRentedMovies(Movie movie){
+
+
+
+    }
+
+    void resetLateFees(){
+
+        
+
+    }
 }
