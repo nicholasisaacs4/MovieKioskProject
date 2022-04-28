@@ -147,10 +147,6 @@ public class KioskUI {
         current_customer.addToHistory("rented" + movie.getTitle() + "on" +LocalDate.now()+ "for" + movie.getPrice());
 
     } 
-    
-    public void addToRentedMovies(Customer customer, Movie movie){
-        customer.rentedMovies.add(movie);
-    }
 
     /*
      ACTION KEY
