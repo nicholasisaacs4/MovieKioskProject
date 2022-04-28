@@ -7,8 +7,21 @@ import java.util.ArrayList;
 public class customerTest {
     @Test
     void IDNumTest(){
-        Customer customer = new Customer("customer", "customer");
-        Admin.admin = new Admin();//will as later
+        Customer customer1 = new Customer("customer@c.com", "customer");
+        Customer customer2 = new Customer("customer@c.com", "customer");
+        Customer customer3 = new Customer("customer@c.com", "customer");
+        ArrayList<Customer> customerList = new ArrayList<Customer>();
+        customer1.setIDNum();
+        customer2.setIDNum();
+        customer3.setIDNum();
+
+        customerList.add(customer1);
+        customerList.add(customer2);
+        customerList.add(customer3);
+        assertEquals(1, customer1.getIDNum());
+
+        /* ADMIN: For Sprint 3, will implement when Admin is impl
+        Admin.admin = new Admin();//will add later
         
         admin.allCustomers.add(customer);
         customer.setIDNum();
@@ -22,6 +35,7 @@ public class customerTest {
         admin.allCustomers.add(customer3);
         customer3.setIDNum();
         assertEquals(3, customer3.getIDNum()); 
+        */
     }
     @Test
     void rentedMoviesTest(){ //tests when movies are added and removed 
@@ -52,10 +66,10 @@ public class customerTest {
         Movie movie =  new Movie("title", "director", "genre");
         Library library = new Library();
         library.addMovie(movie);
-        customer.rent(movie);
+        customer.addToRentedMovies(movie);
         //each time rent is called getTH needs to be called b4 completed so price doesn't change
         assertEquals("rented Movie#1 on "+LocalDate.now()+" for "+movie.getPrice(), customer.getTransactionHistory());
-        customer.returnMovie(movie);
+        customer.removeFromRentedMovies(movie);
         assertEquals("rented Movie#1 on "+LocalDate.now()+" for "+movie.getPrice()+"\nreturned Movie#1 on "+LocalDate.now(), customer.getTransactionHistory());
         //add more as kiosk is implemented i.e. payLateFees, etc.
     }
