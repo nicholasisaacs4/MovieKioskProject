@@ -20,8 +20,8 @@ public class Customer {
         this.password = password;
         lateFees = 0;
     }
-
-    void setIDNum(int Num){
+ 
+    void setIDNum(int Num){ //Number is passed through because this will be set up in admin class
         IDNum = Num+1;
         IDCounter += 1;
     }
@@ -71,10 +71,11 @@ public class Customer {
         return lateFees;
     }
 
-    void setLateFees(Movie thisMovie){
+    void setLateFees(Movie thisMovie){ 
+        /* note: this will not pass in tests right now. not sure why but we believe it has to do with LocalDate functions*/
         int count =0;
-        Period p = Period.between(thisMovie.getDateDue(), thisMovie.getDateReturned());
-        for(int i=0; i<p.getDays(); i++){
+        Period p = Period.between(thisMovie.getDateDue(), thisMovie.getDateReturned()); //finds number of days between due date and date returned
+        for(int i=0; i<p.getDays(); i++){ //for number of days late
             lateFees += 1.99; //1.99 per day of being late
 
         }
@@ -83,8 +84,8 @@ public class Customer {
             Library.removeMovie(thisMovie); //the movie is removed from the library because the customer 'bought' it
         }
         else{
-            lateFees = 0; //paid on time
-        } 
+            lateFees = 0; //paid on time so no late fees
+        }  
     }
 
     Boolean getAccountStatus(){
