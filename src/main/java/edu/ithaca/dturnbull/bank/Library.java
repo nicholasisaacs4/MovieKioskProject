@@ -14,7 +14,8 @@ public class Library {
 
     }
     
-    void addMovie(Movie newMovie){ //adds movie to allMovies
+    void addMovie(Movie newMovie){ 
+        //adds movie to allMovies
         allMovies.add(newMovie);
     }
     ArrayList<Movie> getMovieList(){
@@ -25,7 +26,8 @@ public class Library {
         return topTen;
     }   
 
-    static void removeMovie(Movie movie){ //removes movie from allMovies
+    static void removeMovie(Movie movie){ 
+        //removes movie from allMovies
         if(allMovies.contains(movie)){
             allMovies.remove(movie); //removes the movie from library
         }
@@ -33,7 +35,7 @@ public class Library {
     }
 
     void sortByRank(){
-
+        //sorts all movies in array list by their ranking
         int n = allMovies.size();  
         for (int j = 1; j < n; j++) {  
             int key = allMovies.get(j).ranking;  

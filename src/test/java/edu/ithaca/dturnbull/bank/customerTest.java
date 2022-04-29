@@ -7,7 +7,8 @@ import java.util.ArrayList;
 public class customerTest {
     @Test
     void IDNumTest(){
-        //passes for sprint review purposes
+        //passes for Sprint 2, would implement with admin for sprint 3
+        //tests if IDNumbers would be created properly
         Customer customer1 = new Customer("customer@c.com", "customer");
         Customer customer2 = new Customer("customer@c.com", "customer");
         Customer customer3 = new Customer("customer@c.com", "customer");
@@ -22,26 +23,10 @@ public class customerTest {
         assertEquals(1, customer1.getIDNum());
         assertEquals(2, customer2.getIDNum());
         assertEquals(3, customer3.getIDNum());
-
-        /* ADMIN: For Sprint 3, will implement when Admin is impl
-        Admin.admin = new Admin();//will add later
-        
-        admin.allCustomers.add(customer);
-        customer.setIDNum();
-        assertEquals(1, customer.getIDNum()); 
-       
-        Customer customer2 = new Customer("customer", "customer");
-        admin.allCustomers.add(customer2);
-        customer2.setIDNum();
-        assertEquals(2, customer2.getIDNum()); 
-        Customer customer3 = new Customer("customer", "customer");
-        admin.allCustomers.add(customer3);
-        customer3.setIDNum();
-        assertEquals(3, customer3.getIDNum()); 
-        */
     }
     @Test
-    void rentedMoviesTest(){ //tests when movies are added and removed 
+    void rentedMoviesTest(){ 
+        //tests when movies are added and removed 
         Customer customer = new Customer("customer@c.com", "customer");
         Movie movie =  new Movie("title", "director", "genre");
         Movie movie2 =  new Movie("title", "director", "genre");
@@ -75,7 +60,8 @@ public class customerTest {
     }
 
     @Test
-    void lateFeesTest(){ //started but this won't work right now
+    void lateFeesTest(){ 
+        //tests different amounts for late fees. having trouble with this method and LocalDate function
         Customer cus1 = new Customer("first@last.com", "password");
         Movie movie2 = new Movie("title", "director", "genre");
         Movie movie3 = new Movie("title", "director", "genre");
@@ -114,6 +100,7 @@ public class customerTest {
 
     @Test
     void isEmailValidTest(){
+        //tests if emails are valid
         assertTrue(Customer.isEmailValid( "a@b.com"));   // valid email address
         assertFalse(Customer.isEmailValid("")); //invalid email, nothing there
         assertFalse(Customer.isEmailValid("a.com")); //invalid email no at sign
