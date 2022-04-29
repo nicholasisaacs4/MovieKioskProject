@@ -21,8 +21,8 @@ public class Customer {
         lateFees = 0;
     }
 
-    void setIDNum(){
-        IDNum = IDCounter;
+    void setIDNum(int Num){
+        IDNum = Num+1;
         IDCounter += 1;
     }
 
