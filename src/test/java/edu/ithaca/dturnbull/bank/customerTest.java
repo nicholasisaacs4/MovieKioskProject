@@ -56,46 +56,7 @@ public class customerTest {
         library.addMovie(movie);
         customer.addToRentedMovies(movie);
         customer.addToHistory("added to rented movies");
-        assertEquals("[added to rented movies]", customer.getTransactionHistory()); //tests that get/add are same
-    }
-
-    @Test
-    void lateFeesTest(){ 
-        //tests different amounts for late fees. having trouble with this method and LocalDate function
-        Customer cus1 = new Customer("first@last.com", "password");
-        Movie movie2 = new Movie("title", "director", "genre");
-        Movie movie3 = new Movie("title", "director", "genre");
-        Movie movie4 = new Movie("title", "director", "genre");
-        
-        //Movie 2: Returned on time 
-        movie2.resetDates(); //resets late fees to 0
-        movie2.setDateRented(LocalDate.of(1999, 8, 30)); //sets due date
-        movie2.setRanking(10);
-        movie2.setDateDue(); //sets due date to 3 days after
-        movie2.setDateReturned(LocalDate.of(1999, 9, 1)); //returned before due date
-        cus1.setLateFees(movie2);
-        assertEquals(0, cus1.getLateFees()); //returned on time so 0 late fees
-
-        //Movie 3: Returned a few days late
-        movie3.resetDates(); //resets days
-        cus1.resetLateFees(); //resets late fees to 0
-        movie3.setDateRented(LocalDate.of(1999, 8, 30)); //sets due date
-        movie3.setRanking(10);
-        movie3.setDateDue(); //sets due date to 3 days after
-        movie3.setDateReturned(LocalDate.of(1999, 9, 5)); //returned 2 days after due date
-        assertEquals(0, cus1.getLateFees());
-        cus1.setLateFees(movie3);
-        assertEquals(3.98, cus1.getLateFees());
-
-        //Movie 4: Returned way late & movie is bought out
-        movie4.resetDates(); //resets days
-        cus1.resetLateFees(); //resets late fees to 0
-        movie4.setDateRented(LocalDate.of(1999, 8, 30)); //sets due date
-        movie4.setRanking(10);
-        movie4.setDateDue(); //sets due date to 3 days after
-        movie4.setDateReturned(LocalDate.of(1999, 12, 30)); //returned 4 months after due date
-        cus1.setLateFees(movie4);
-        assertEquals(20, cus1.getLateFees());
+        assertEquals("[added to rented movies]", customer.transactionHistory.toString()); //tests that get/add are same
     }
 
     @Test
