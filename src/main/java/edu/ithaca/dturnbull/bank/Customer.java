@@ -71,23 +71,6 @@ public class Customer {
         return lateFees;
     }
 
-    void setLateFees(Movie thisMovie){ 
-        /* note: this will not pass in tests right now. not sure why but we believe it has to do with LocalDate functions*/
-        int count =0;
-        Period p = Period.between(thisMovie.getDateDue(), thisMovie.getDateReturned()); //finds number of days between due date and date returned
-        for(int i=0; i<p.getDays(); i++){ //for number of days late
-            lateFees += 1.99; //1.99 per day of being late
-
-        }
-        if(lateFees >= thisMovie.getPrice()){
-            lateFees = thisMovie.getPrice(); //if the late fees exceed the movie price, they will be charged the movie
-            Library.removeMovie(thisMovie); //the movie is removed from the library because the customer 'bought' it
-        }
-        else{
-            lateFees = 0; //paid on time so no late fees
-        }  
-    }
-
     Boolean getAccountStatus(){
         return accountStatus;
     }
