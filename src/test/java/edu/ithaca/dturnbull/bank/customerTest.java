@@ -50,7 +50,8 @@ public class customerTest {
     void transactionHistoryTest(){
         //returns string representing transaction history
         Customer customer = new Customer("customer", "customer");
-        //assertThrows(NoTransactionHistoryException.class, () -> customer.getTransactionHistory());
+        assertThrows(IllegalArgumentException.class, () -> customer.getTransactionHistory()); //nothing in transaction history so error is thrown
+        assertThrows(IllegalArgumentException.class, () -> customer.addToHistory("")); //nothing entered
         Movie movie =  new Movie("title", "director", "genre");
         Library library = new Library();
         library.addMovie(movie);

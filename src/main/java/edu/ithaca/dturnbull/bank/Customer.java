@@ -31,6 +31,9 @@ public class Customer {
     }
 
     List<String> getTransactionHistory(){
+        if(transactionHistory.isEmpty()){
+            throw new IllegalArgumentException("History is Empty");
+        }
         return transactionHistory;
     }
 
