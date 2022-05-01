@@ -5,12 +5,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Customer {
-    ArrayList<Movie> rentedMovies = new ArrayList<>();
+    ArrayList<Movie> rentedMovies = new ArrayList<Movie>();
     int IDNum;
     String email;
     String password;
     double lateFees;
-    List<String> transactionHistory = new ArrayList<>();
+    ArrayList<String> transactionHistory = new ArrayList<String>();
     static boolean accountStatus;
     private static int IDCounter = 1;
 
@@ -31,6 +31,9 @@ public class Customer {
     }
 
     List<String> getTransactionHistory(){
+        if(transactionHistory.isEmpty()){
+            throw new IllegalArgumentException("History is Empty");
+        }
         return transactionHistory;
     }
 
@@ -91,15 +94,16 @@ public class Customer {
     }
 
 
-    void addToHistory(String messege){
+    void addToHistory(String message){
 
-        if (!messege.isEmpty()){
+        if (!message.isEmpty()){
 
-            transactionHistory.add(messege);
+            transactionHistory.add(message);
 
-        }else{
+        }
+        else{
 
-            throw new IllegalArgumentException("empty messege");
+            throw new IllegalArgumentException("empty message");
 
         }
 
@@ -114,12 +118,6 @@ public class Customer {
     void  removeFromRentedMovies(Movie movie){
 
 
-
-    }
-
-    void resetLateFees(){
-
-        
 
     }
 }
