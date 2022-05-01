@@ -5,12 +5,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Customer {
-    ArrayList<Movie> rentedMovies;
+    ArrayList<Movie> rentedMovies = new ArrayList<>();
     int IDNum;
     String email;
     String password;
     double lateFees;
-    List<String> transactionHistory;
+    List<String> transactionHistory = new ArrayList<>();
     static boolean accountStatus;
     private static int IDCounter = 1;
 

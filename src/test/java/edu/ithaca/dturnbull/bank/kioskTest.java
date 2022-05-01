@@ -41,7 +41,6 @@ class kioskTest {
 
     @Test
     void payLateFeesTest(){
-
         KioskUI testKioskUI = new KioskUI();
         //create valid customer 
         testKioskUI.createAccount("nicholasisaacs4@gmail.com", "password");
@@ -61,8 +60,14 @@ class kioskTest {
     }
 
     @Test
-    void rentTest(){
+    void rentTest(){ 
+        KioskUI testKioskUI = new KioskUI();
+        testKioskUI.createAccount("nicholasisaacs4@gmail.com", "password");
+        testKioskUI.login("nicholasisaacs4@gmail.com", "password");
+        Movie movie = new Movie("title", "director", "genre");
+        testKioskUI.rent(movie);
 
+        assertEquals(movie, testKioskUI.current_customer.getRentedMovies().get(0));
     }
 
     @Test 

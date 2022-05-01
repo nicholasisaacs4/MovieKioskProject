@@ -8,10 +8,12 @@ public class KioskUI {
 
     Customer current_customer;
     ArrayList<Customer> customers;
+    int test;
 
 
     public KioskUI(){
-        this.customers = new ArrayList<>();
+        this.customers = new ArrayList<Customer>();
+        this.test = 1;
     }
 
     public void login(String email, String password){
@@ -85,6 +87,7 @@ public class KioskUI {
             noMovie();
         }
     }
+
     //kioskUI
     public void rent(){
         System.out.println("Search by:\n1.\ttitle\n2.\tdirector\n3.\tgenre\n4.\tmost popular");
@@ -132,9 +135,7 @@ public class KioskUI {
                  if time, add failsafe for incorrect input, and add and option to cancel search
                  make it print (i+1)".\t<- back" or something, make if statement where index+1 = rent()
                 */
-            }
-
-            
+            }  
         }
 
         
@@ -142,7 +143,6 @@ public class KioskUI {
     
     //for testing
     public void rent(Movie movie){
-        //create search function
         current_customer.rentedMovies.add(movie);
         current_customer.addToHistory("rented" + movie.getTitle() + "on" +LocalDate.now()+ "for" + movie.getPrice());
 
