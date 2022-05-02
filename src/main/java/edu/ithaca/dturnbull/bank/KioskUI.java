@@ -94,7 +94,7 @@ public class KioskUI {
         Scanner scanner = new Scanner(System.in);
         // String userChoice = "1";
         String userChoice = scanner.nextLine();
-        scanner.close();
+        
 
         // BY TITLE //
         if(userChoice.equals("1")){

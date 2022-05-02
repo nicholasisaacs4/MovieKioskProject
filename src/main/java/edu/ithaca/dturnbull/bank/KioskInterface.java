@@ -9,6 +9,7 @@ public interface KioskInterface {
 
     public static void main(String[] args) {
 
+        boolean running = true;
         KioskUI kiosk = new KioskUI();
         
         System.out.println("Welcome");
@@ -43,30 +44,47 @@ public interface KioskInterface {
             kiosk.login(email, Password);
         }
 
-        System.out.println("1) Search");
-        System.out.println("2) Rent");
-        System.out.println("3) Return");
+        
+        System.out.println("1) Rent");
+        System.out.println("2) Return");
 
-        Scanner scannerOptions= new Scanner(System.in);
-        String Option = scannerOptions.nextLine();
+        //not working 
+        while(running == true){
 
-        if (Option.equals("1")){
+            Scanner scannerOptions= new Scanner(System.in);
+            String Option = scannerOptions.nextLine();
 
-            //search movie process 
+            if (Option.equals("1")){
 
+                //rent movie process 
+                kiosk.rent();
+
+            }
+
+            if (Option.equals("2")){
+
+                //return movie process
+
+                //print out all rented movies
+
+                if (kiosk.current_customer.rentedMovies.size() > 0){
+                    for(int x = 0; x<= kiosk.current_customer.rentedMovies.size()-1; x++){
+
+                        System.out.println(x +" "+ kiosk.current_customer.rentedMovies.get(x).IDNum + " " + 
+                        kiosk.current_customer.rentedMovies.get(x).title + " " +
+                        kiosk.current_customer.rentedMovies.get(x).dateRented );
+
+                    }
+                }else{
+                    
+                }
+
+                kiosk.returnMovie(//index of selected movie);
+                
+            }
         }
 
-        if (Option.equals("2")){
-
-            //rent movie process
-            
-        }
-
-        if (Option.equals("3")){
-
-            //return movie process
-
-        }
+        
 
     }
     
