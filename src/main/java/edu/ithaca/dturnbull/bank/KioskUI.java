@@ -59,7 +59,7 @@ public class KioskUI {
 
         if(current_customer.rentedMovies.size()>0){
 
-            for (int x = 0; x<= current_customer.rentedMovies.size(); x++){
+            for (int x = 0; x<= current_customer.rentedMovies.size()-1; x++){
                if (current_customer.rentedMovies.get(x).IDNum == movieID){
                  current_customer.rentedMovies.remove(x);
                }

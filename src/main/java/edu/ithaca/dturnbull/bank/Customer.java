@@ -122,13 +122,10 @@ public class Customer {
 
 
     }
-<<<<<<< HEAD
 
     void resetLateFees(){
 
 
 
     }
-=======
->>>>>>> 60c0ef54b944efbcab81fecaf348de951c15a84a
 }

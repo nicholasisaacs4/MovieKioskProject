@@ -55,7 +55,21 @@ class kioskTest {
     @Test
     void returnMovieTest(){
 
-        
+        KioskUI testKioskUI = new KioskUI();
+        testKioskUI.createAccount("nicholasisaacs4@gmail.com", "password");
+        testKioskUI.login("nicholasisaacs4@gmail.com", "password");
+        Movie movie = new Movie("title", "director", "genre");
+        Movie movie2 = new Movie("title", "director", "genre");
+        testKioskUI.rent(movie);
+        assertEquals(movie, testKioskUI.current_customer.getRentedMovies().get(0));
+        testKioskUI.rent(movie2);
+        assertEquals(testKioskUI.current_customer.getRentedMovies().size(), 2);
+
+        testKioskUI.returnMovie(movie.IDNum);
+        assertEquals(testKioskUI.current_customer.getRentedMovies().size(), 1);
+        testKioskUI.returnMovie(movie2.IDNum);
+        assertEquals(testKioskUI.current_customer.getRentedMovies().size(), 0);
+
 
     }
 
@@ -77,6 +91,7 @@ class kioskTest {
     void getSetTransaction(){
 
         
+
     }
     
 }
