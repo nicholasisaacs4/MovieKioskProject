@@ -16,6 +16,8 @@ public class Customer {
 
 
     public Customer(String emailIn, String password){
+        transactionHistory = new ArrayList<>();
+        rentedMovies = new ArrayList<>();
         this.email = emailIn;
         this.password = password;
         lateFees = 0;
@@ -135,7 +137,7 @@ public class Customer {
 
     void resetLateFees(){
 
-        
+
 
     }
 }

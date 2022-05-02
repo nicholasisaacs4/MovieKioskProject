@@ -12,9 +12,9 @@ public class customerTest {
         Customer customer2 = new Customer("customer@c.com", "customer");
         Customer customer3 = new Customer("customer@c.com", "customer");
         ArrayList<Customer> customerList = new ArrayList<Customer>();
-        customer1.setIDNum(0);
-        customer2.setIDNum(1);
-        customer3.setIDNum(2);
+        customer1.setIDNum();
+        customer2.setIDNum();
+        customer3.setIDNum();
 
         customerList.add(customer1);
         customerList.add(customer2);
