@@ -8,10 +8,12 @@ public class KioskUI {
 
     Customer current_customer;
     ArrayList<Customer> customers;
+    int test;
 
 
     public KioskUI(){
-        this.customers = new ArrayList<>();
+        this.customers = new ArrayList<Customer>();
+        this.test = 1;
     }
 
     public void login(String email, String password){
@@ -85,11 +87,14 @@ public class KioskUI {
             noMovie();
         }
     }
+
     //kioskUI
     public void rent(){
         System.out.println("Search by:\n1.\ttitle\n2.\tdirector\n3.\tgenre\n4.\tmost popular");
         Scanner scanner = new Scanner(System.in);
+        // String userChoice = "1";
         String userChoice = scanner.nextLine();
+        scanner.close();
 
         // BY TITLE //
         if(userChoice.equals("1")){
@@ -132,9 +137,7 @@ public class KioskUI {
                  if time, add failsafe for incorrect input, and add and option to cancel search
                  make it print (i+1)".\t<- back" or something, make if statement where index+1 = rent()
                 */
-            }
-
-            
+            }  
         }
 
         
@@ -142,15 +145,10 @@ public class KioskUI {
     
     //for testing
     public void rent(Movie movie){
-        //create search function
         current_customer.rentedMovies.add(movie);
         current_customer.addToHistory("rented" + movie.getTitle() + "on" +LocalDate.now()+ "for" + movie.getPrice());
 
     } 
-    
-    public void addToRentedMovies(Customer customer, Movie movie){
-        customer.rentedMovies.add(movie);
-    }
 
     /*
      ACTION KEY
@@ -167,5 +165,13 @@ public class KioskUI {
         else{
             customer.addToHistory("returned Movie#"+movie.getIDNum()+" on "+LocalDate.now());
         }
+    }
+
+    public static void main(String[] args) {
+        System.out.println("Welcome!  Would you like ");
+        KioskUI testKioskUI = new KioskUI();
+        testKioskUI.createAccount("nicholasisaacs4@gmail.com", "password");
+        testKioskUI.login("nicholasisaacs4@gmail.com", "password");
+        testKioskUI.rent();
     }
 }

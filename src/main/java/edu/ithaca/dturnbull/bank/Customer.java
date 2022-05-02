@@ -5,12 +5,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Customer {
-    ArrayList<Movie> rentedMovies;
+    ArrayList<Movie> rentedMovies = new ArrayList<Movie>();
     int IDNum;
     String email;
     String password;
     double lateFees;
-    List<String> transactionHistory;
+    ArrayList<String> transactionHistory = new ArrayList<String>();
     static boolean accountStatus;
     private static int IDCounter = 1;
 
@@ -22,9 +22,9 @@ public class Customer {
         this.password = password;
         lateFees = 0;
     }
-
-    void setIDNum(){
-        IDNum = IDCounter;
+ 
+    void setIDNum(int Num){ //Number is passed through because this will be set up in admin class
+        IDNum = Num+1;
         IDCounter += 1;
     }
 
@@ -33,6 +33,9 @@ public class Customer {
     }
 
     List<String> getTransactionHistory(){
+        if(transactionHistory.isEmpty()){
+            throw new IllegalArgumentException("History is Empty");
+        }
         return transactionHistory;
     }
 
@@ -73,22 +76,6 @@ public class Customer {
         return lateFees;
     }
 
-    void setLateFees(Movie thisMovie){
-        int count =0;
-        Period p = Period.between(thisMovie.getDateDue(), thisMovie.getDateReturned());
-        for(int i=0; i<p.getDays(); i++){
-            lateFees += 1.99; //1.99 per day of being late
-
-        }
-        if(lateFees >= thisMovie.getPrice()){
-            lateFees = thisMovie.getPrice(); //if the late fees exceed the movie price, they will be charged the movie
-            Library.removeMovie(thisMovie); //the movie is removed from the library because the customer 'bought' it
-        }
-        else{
-            lateFees = 0; //paid on time
-        } 
-    }
-
     Boolean getAccountStatus(){
         return accountStatus;
     }
@@ -109,15 +96,16 @@ public class Customer {
     }
 
 
-    void addToHistory(String messege){
+    void addToHistory(String message){
 
-        if (!messege.isEmpty()){
+        if (!message.isEmpty()){
 
-            transactionHistory.add(messege);
+            transactionHistory.add(message);
 
-        }else{
+        }
+        else{
 
-            throw new IllegalArgumentException("empty messege");
+            throw new IllegalArgumentException("empty message");
 
         }
 
@@ -134,10 +122,13 @@ public class Customer {
 
 
     }
+<<<<<<< HEAD
 
     void resetLateFees(){
 
 
 
     }
+=======
+>>>>>>> 60c0ef54b944efbcab81fecaf348de951c15a84a
 }

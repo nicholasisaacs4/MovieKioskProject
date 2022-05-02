@@ -45,6 +45,7 @@ public class Movie{
     }
 
     void setPrice(){
+        //sets price according to ranking
         if(ranking>=10){ //if rented >10 times
             price = 20;
         }
@@ -81,6 +82,7 @@ public class Movie{
     }
 
     void setDateDue(){
+        //sets due date according to ranking
         if(ranking>=10){
             dateDue = dateRented.plusDays(3); //popular movie = less days
         }

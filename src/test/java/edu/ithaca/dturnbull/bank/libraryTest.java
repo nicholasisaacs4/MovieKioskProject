@@ -11,6 +11,7 @@ public class libraryTest {
 
     @Test
     void addAndRemoveMovieTest(){
+        //tests if movies are added and removed from the library
         Library library = new Library();
         Movie movie1 = new Movie("title", "director", "genre");
         library.addMovie(movie1);

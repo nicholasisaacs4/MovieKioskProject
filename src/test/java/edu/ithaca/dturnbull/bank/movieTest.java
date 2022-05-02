@@ -6,6 +6,7 @@ import java.time.LocalDate;
 public class movieTest {
     @Test
     void IDTest(){
+        //tests if movie IDs are accurate
         Movie movie = new Movie("title", "director", "genre");
         Library library = new Library();
         
@@ -26,6 +27,7 @@ public class movieTest {
 
     @Test
     void rankingTest(){
+        //tests if rankings are accurate
         Movie movie = new Movie("The Nightmare Before Christmas", "Henry Selick", "Animation"); //animation isn't a genre but idk what to put here
         movie.setRanking(1);
         assertEquals(movie.getRanking(), 1);
@@ -35,6 +37,7 @@ public class movieTest {
 
     @Test
     void priceTest(){
+        //tests if prices are accurate based off of rankings
         Movie movie = new Movie("The Avengers", "Joss Whedon", "Action");
         movie.setPrice();
         assertEquals(movie.getPrice(), 5);
@@ -50,6 +53,7 @@ public class movieTest {
 
     @Test
     void dateRentedTest(){
+        //tests if date rented functions work
         Movie movie = new Movie("Star Wars", "George Lucas", "Sci-fi");
         movie.setDateRented(LocalDate.now());
         assertEquals(movie.getDateRented(), LocalDate.now());
@@ -60,6 +64,7 @@ public class movieTest {
 
     @Test
     void dateDueTest(){
+        //tests if due date functions work
         LocalDate dateRented = LocalDate.now();
         Movie movie = new Movie("Beetlejuice", "Tim Burton", "Comedy");
         movie.setDateRented(LocalDate.now());
@@ -81,6 +86,7 @@ public class movieTest {
 
     @Test
     void resetDateTest(){
+        //tests if reset date works
         LocalDate dateRented = LocalDate.now();
         Movie movie = new Movie("Beetlejuice", "Tim Burton", "Comedy");
         movie.setDateRented(LocalDate.now());
