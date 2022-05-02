@@ -95,7 +95,6 @@ public class KioskUI {
         // String userChoice = "1";
         String userChoice = scanner.nextLine();
         scanner.close();
-        System.out.println(userChoice);
 
         // BY TITLE //
         if(userChoice.equals("1")){
@@ -166,5 +165,13 @@ public class KioskUI {
         else{
             customer.addToHistory("returned Movie#"+movie.getIDNum()+" on "+LocalDate.now());
         }
+    }
+
+    public static void main(String[] args) {
+        System.out.println("Welcome!  Would you like ");
+        KioskUI testKioskUI = new KioskUI();
+        testKioskUI.createAccount("nicholasisaacs4@gmail.com", "password");
+        testKioskUI.login("nicholasisaacs4@gmail.com", "password");
+        testKioskUI.rent();
     }
 }
