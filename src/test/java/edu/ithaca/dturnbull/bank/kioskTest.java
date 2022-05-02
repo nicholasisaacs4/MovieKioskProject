@@ -73,6 +73,14 @@ class kioskTest {
         assertEquals(movie2, testKioskUI.current_customer.getRentedMovies().get(1));
     }
 
+    @Test
+    void rentUITest(){
+        KioskUI testKioskUI = new KioskUI();
+        testKioskUI.createAccount("nicholasisaacs4@gmail.com", "password");
+        testKioskUI.login("nicholasisaacs4@gmail.com", "password");
+        testKioskUI.rent();
+    }
+
     @Test 
     void getSetTransaction(){
 

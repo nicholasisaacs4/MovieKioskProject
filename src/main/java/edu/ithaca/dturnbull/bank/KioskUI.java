@@ -92,7 +92,10 @@ public class KioskUI {
     public void rent(){
         System.out.println("Search by:\n1.\ttitle\n2.\tdirector\n3.\tgenre\n4.\tmost popular");
         Scanner scanner = new Scanner(System.in);
+        // String userChoice = "1";
         String userChoice = scanner.nextLine();
+        scanner.close();
+        System.out.println(userChoice);
 
         // BY TITLE //
         if(userChoice.equals("1")){
