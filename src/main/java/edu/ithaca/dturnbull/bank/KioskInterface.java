@@ -45,6 +45,7 @@ public interface KioskInterface {
                 Scanner scannerPassword= new Scanner(System.in);
                 String Password = scannerPassword.nextLine();
                 kiosk.login(email, Password);
+                System.out.println("hello" + " " + email);
                 Functions = true;
             }
 

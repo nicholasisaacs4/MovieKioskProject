@@ -222,7 +222,7 @@ public class KioskUI {
     public void rent(Movie movie){
         current_customer.rentedMovies.add(movie);
         current_customer.addToHistory("rented" + movie.getTitle() + "on" +LocalDate.now()+ "for" + movie.getPrice());
-        System.out.println("thanks for renting" + movie.title);
+        System.out.println("thanks for renting" + " " + movie.title);
 
     } 
 
