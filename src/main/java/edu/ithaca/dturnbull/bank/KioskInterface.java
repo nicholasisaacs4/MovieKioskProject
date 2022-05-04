@@ -4,8 +4,6 @@ import java.util.Scanner;
 
 public interface KioskInterface {
 
-    
-
 
     public static void main(String[] args) {
 
@@ -48,8 +46,6 @@ public interface KioskInterface {
         System.out.println("1) Rent");
         System.out.println("2) Return");
 
-        //not working 
-        while(running == true){
 
             Scanner scannerOptions= new Scanner(System.in);
             String Option = scannerOptions.nextLine();
@@ -63,6 +59,7 @@ public interface KioskInterface {
 
             if (Option.equals("2")){
 
+                System.out.println("Please enter movie ID you want to return");
                 //return movie process
 
                 //print out all rented movies
@@ -77,15 +74,17 @@ public interface KioskInterface {
                     }
                 }else{
                     
+                    System.out.println("you have no rented movies, returning to the main screen");
                 }
 
-                kiosk.returnMovie(//index of selected movie);
+                Scanner scannerID= new Scanner(System.in);
+                int ID = scannerID.nextInt();
+                kiosk.returnMovie(ID);
+
                 
+
+
             }
-        }
-
-        
-
     }
     
 }
