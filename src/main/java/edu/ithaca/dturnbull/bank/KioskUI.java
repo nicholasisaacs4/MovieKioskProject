@@ -110,8 +110,16 @@ public class KioskUI {
             Scanner scanner3= new Scanner(System.in);
             //uses index to rent correct movie
             System.out.println("please select a movie from above");
-            int selection = Integer.parseInt(scanner3.nextLine()) -1;
-            rent(lib.allMovies.get(selection));
+
+
+            boolean selection = true;
+            while(selection == true){
+                int select = Integer.parseInt(scanner3.nextLine()) -1;
+                if (select <= lib.allMovies.size()-1){
+                    rent(lib.allMovies.get(select));
+                    selection = false;
+                }
+            }
 
         }
 
@@ -222,7 +230,9 @@ public class KioskUI {
     public void rent(Movie movie){
         current_customer.rentedMovies.add(movie);
         current_customer.addToHistory("rented" + movie.getTitle() + "on" +LocalDate.now()+ "for" + movie.getPrice());
-        System.out.println("thanks for renting" + " " + movie.title);
+        System.out.println("thanks for renting" + " " + movie.title + " "+ "returning back to the menu");
+        System.out.println(" ");
+
 
     } 
 
