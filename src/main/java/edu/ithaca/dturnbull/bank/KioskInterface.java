@@ -1,6 +1,7 @@
 package edu.ithaca.dturnbull.bank;
 
 import java.util.Scanner;
+import java.util.function.Function;
 
 public interface KioskInterface {
 
@@ -83,15 +84,18 @@ public interface KioskInterface {
 
                         }
 
+                        Scanner scannerID= new Scanner(System.in);
+                        int ID = scannerID.nextInt();
+                        kiosk.returnMovie(ID);
+
                     }else{
                         
                         System.out.println("you have no rented movies, returning to the main screen");
+                        Functions = false;
 
                     }
 
-                    Scanner scannerID= new Scanner(System.in);
-                    int ID = scannerID.nextInt();
-                    kiosk.returnMovie(ID);
+        
 
                 }
                 if (Option.equals("3")){
