@@ -154,7 +154,14 @@ public class KioskUI {
         KioskUI testKioskUI = new KioskUI();
         testKioskUI.createAccount("nicholasisaacs4@gmail.com", "password");
         testKioskUI.login("nicholasisaacs4@gmail.com", "password");
-        
+        Library testLibrary = new Library();
+        testLibrary.testLibrary();
         testKioskUI.rent();
+
+        //testing:
+        // System.out.println("Rented Movies:");
+        // for(int i = 0; i < testKioskUI.current_customer.rentedMovies.size(); i++){
+        //     System.out.println(testKioskUI.current_customer.rentedMovies.get(i).getTitle()1);
+        // }
     }
 }
