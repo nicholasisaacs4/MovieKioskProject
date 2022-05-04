@@ -147,56 +147,6 @@ public class KioskUI {
     public void rent(Movie movie){
         current_customer.rentedMovies.add(movie);
         current_customer.addToHistory("rented" + movie.getTitle() + "on" +LocalDate.now()+ "for" + movie.getPrice());
-
     } 
-    public static void main(String[] args) {
-        KioskUI testKioskUI = new KioskUI();
-        testKioskUI.createAccount("nicholasisaacs4@gmail.com", "password");
-        testKioskUI.login("nicholasisaacs4@gmail.com", "password");
-        Library testLibrary = new Library();
-        testLibrary.testLibrary();
-        boolean cont = true;
-        System.out.print("Welcome!");
 
-        while(cont = true){
-            System.out.println( "Would you like to:\n1.\trent\n2.\treturn\n3.\tpay late fees");
-            Scanner scanner = new Scanner(System.in);
-            String userChoice = scanner.nextLine();
-            Scanner scanner2 = new Scanner(System.in);
-            
-            if (userChoice.equals("1")){
-                testKioskUI.rent();
-                System.out.println("preform another action? (y/n)");
-                String uc2 = scanner2.nextLine();
-                if(uc2.equals("n")){
-                    cont = false;
-                    break;
-                }
-                else if(uc2.equals("y")){
-                    cont = true;
-                    break;
-                }
-                else{
-                  System.exit(0); 
-                }
-            }
-            else if (userChoice.equals("2")){
-                testKioskUI.return();
-            }
-            else if (userChoice.equals("3")){
-                System.out.println("Paying $"+ testKioskUI.current_customer.lateFees +"...");
-                testKioskUI.payLateFees();
-            }
-            else{
-                System.out.println("invalid response");
-            }
-        }
-        
-
-        //testing:
-        // System.out.println("Rented Movies:");
-        // for(int i = 0; i < testKioskUI.current_customer.rentedMovies.size(); i++){
-        //     System.out.println(testKioskUI.current_customer.rentedMovies.get(i).getTitle()1);
-        // }
-    }
 }
