@@ -140,7 +140,49 @@ public class KioskUI {
                 */
             }  
         }
+        // BY DIRECTOR //
+        if(userChoice.equals("2")){
+            System.out.println("Enter director:");
+            Scanner scanner2= new Scanner(System.in);
+            String director = scanner2.nextLine();
+            boolean movieExists = false;
+            //makes list of search results
+            ArrayList<Movie> movieList = new ArrayList<>();
+            for(Movie movie:Library.allMovies){
+                if(movie.title.equals(director)){
+                    movieList.add(movie);
+                    movieExists = true;
+                }
+            }
+            //if no movies in list, initiates noMovie() (see above method)
+            if (movieExists = false){
+                noMovie();
+            }
 
+            //if only one movie matches search, movie is rented
+            else if(movieList.size() == 1){
+                rent(movieList.get(0));
+            }
+
+            //if mult. movies in search result, user is asked to select the correct one
+            else{
+                System.out.println("Please make a selection:");
+                int i = 1;
+                //lists each movie that matches search param
+                for(Movie movie:movieList){
+                    System.out.println(i+".\t"+movie.director);
+                    i++;
+                }
+                Scanner scanner3= new Scanner(System.in);
+                //uses index to rent correct movie
+                int selection = Integer.parseInt(scanner3.nextLine()) -1;
+                rent(movieList.get(selection));
+                /* 
+                 if time, add failsafe for incorrect input, and add and option to cancel search
+                 make it print (i+1)".\t<- back" or something, make if statement where index+1 = rent()
+                */
+            }  
+        }
         
     }
     
