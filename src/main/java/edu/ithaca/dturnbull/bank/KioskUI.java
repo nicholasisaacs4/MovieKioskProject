@@ -168,10 +168,11 @@ public class KioskUI {
     }
 
     public static void main(String[] args) {
-        System.out.println("Welcome!  Would you like ");
+        System.out.println("Welcome!  Would you like to:\n");
         KioskUI testKioskUI = new KioskUI();
         testKioskUI.createAccount("nicholasisaacs4@gmail.com", "password");
         testKioskUI.login("nicholasisaacs4@gmail.com", "password");
+        
         testKioskUI.rent();
     }
 }
