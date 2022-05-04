@@ -46,7 +46,7 @@ public class KioskUI {
     public void payLateFees(){
 
         if (current_customer.lateFees > 0){
-            addToTransactionHistory(current_customer);
+            current_customer.addToHistory("paid late fees on "+LocalDate.now()+" for $"+current_customer.lateFees);
             current_customer.lateFees = 0;
             
         }else{
@@ -62,6 +62,7 @@ public class KioskUI {
             for (int x = 0; x<= current_customer.rentedMovies.size()-1; x++){
                if (current_customer.rentedMovies.get(x).IDNum == movieID){
                  current_customer.rentedMovies.remove(x);
+                 current_customer.addToHistory("returned Movie#"+movieID+" on "+LocalDate.now());
                }
             }
 
@@ -143,30 +144,11 @@ public class KioskUI {
         
     }
     
-    //for testing
     public void rent(Movie movie){
         current_customer.rentedMovies.add(movie);
         current_customer.addToHistory("rented" + movie.getTitle() + "on" +LocalDate.now()+ "for" + movie.getPrice());
 
     } 
-
-    /*
-     ACTION KEY
-     rent - "rent"
-     return - "return"
-    */
-    public void addToTransactionHistory(Customer customer){
-        customer.addToHistory("paid late fees on "+LocalDate.now()+" for $"+customer.lateFees);
-    }
-    public void addToTransactionHistory(Customer customer, Movie movie, String action){
-        if(action.equals("rent")){
-            customer.addToHistory("rented Movie#"+movie.getIDNum()+" on "+LocalDate.now()+" for $"+movie.getPrice());
-        }
-        else{
-            customer.addToHistory("returned Movie#"+movie.getIDNum()+" on "+LocalDate.now());
-        }
-    }
-
     public static void main(String[] args) {
         System.out.println("Welcome!  Would you like to:\n");
         KioskUI testKioskUI = new KioskUI();
