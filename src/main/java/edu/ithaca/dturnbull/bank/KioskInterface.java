@@ -20,7 +20,7 @@ public interface KioskInterface {
             Scanner scanner2= new Scanner(System.in);
             String title = scanner2.nextLine();
 
-            if (title.equals("login")){
+            if (title.equals("new")){
 
                 //new account process 
                 System.out.println("New customer");
@@ -34,7 +34,7 @@ public interface KioskInterface {
                 Functions  = true;
 
             }
-            if (title.equals("new")){
+            if (title.equals("login")){
 
                 //login process
                 System.out.println("new");
@@ -57,8 +57,7 @@ public interface KioskInterface {
                 System.out.println("2) Return");
                 System.out.println("3) logout");
 
-            
-
+                
                 Scanner scannerOptions= new Scanner(System.in);
                 String Option = scannerOptions.nextLine();
 
@@ -66,7 +65,6 @@ public interface KioskInterface {
 
                     //rent movie process 
                     kiosk.rent(lib);
-
 
                 }
 
@@ -82,7 +80,6 @@ public interface KioskInterface {
                             kiosk.current_customer.rentedMovies.get(x).title + " " +
                             kiosk.current_customer.rentedMovies.get(x).dateRented );
 
-                            
                         }
 
                     }else{

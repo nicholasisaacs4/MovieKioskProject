@@ -9,6 +9,7 @@ public class KioskUI {
     Customer current_customer;
     ArrayList<Customer> customers;
     int test;
+    Library lib;
 
 
     public KioskUI(){
@@ -78,7 +79,7 @@ public class KioskUI {
         Scanner scanner = new Scanner(System.in);
         String userChoice = scanner.nextLine();
         if(userChoice.equals("1")){
-            //rent();
+            rent(lib);
         }
         else if(userChoice.equals("2")){
             //idk what would go here :P
@@ -92,6 +93,8 @@ public class KioskUI {
 
     //kioskUI
     public void rent(Library lib){
+
+        this.lib = lib;
         System.out.println("Search by:\n1.\ttitle\n2.\tdirector\n3.\tgenre\n4.\tmost popular");
         Scanner scanner = new Scanner(System.in);
         // String userChoice = "1";
@@ -113,22 +116,22 @@ public class KioskUI {
                 }
             }
             //if no movies in list, initiates noMovie() (see above method)
-            if (movieExists = false){
+            if (movieExists == false){
                 noMovie();
             }
 
             //if only one movie matches search, movie is rented
-            else if(movieList.size() == 1){
+            if(movieList.size() == 1){
                 rent(movieList.get(0));
             }
 
             //if mult. movies in search result, user is asked to select the correct one
-            else{
+            else if (movieList.size() >= 1){
                 System.out.println("Please make a selection:");
                 int i = 1;
                 //lists each movie that matches search param
-                for(Movie movie:movieList){
-                    System.out.println(i+".\t"+movie.title);
+                for(int x=0; x<=movieList.size()-1; x++){
+                    System.out.println(i+".\t"+movieList.get(x).title);
                     i++;
                 }
                 Scanner scanner3= new Scanner(System.in);
@@ -149,29 +152,30 @@ public class KioskUI {
             boolean movieExists = false;
             //makes list of search results
             ArrayList<Movie> movieList = new ArrayList<>();
-            for(Movie movie:Library.allMovies){
-                if(movie.title.equals(director)){
-                    movieList.add(movie);
+            for(int x=0; x<=lib.allMovies.size()-1; x++){
+                if(lib.allMovies.get(x).director.equals(director)){
+                    movieList.add(lib.allMovies.get(x));
                     movieExists = true;
                 }
             }
+
             //if no movies in list, initiates noMovie() (see above method)
-            if (movieExists = false){
+            if (movieExists == false){
                 noMovie();
             }
 
             //if only one movie matches search, movie is rented
-            else if(movieList.size() == 1){
+            if(movieList.size() == 1){
                 rent(movieList.get(0));
             }
 
             //if mult. movies in search result, user is asked to select the correct one
-            else{
+            else if (movieList.size() > 1){
                 System.out.println("Please make a selection:");
                 int i = 1;
                 //lists each movie that matches search param
                 for(Movie movie:movieList){
-                    System.out.println(i+".\t"+movie.director);
+                    System.out.println(i+".\t"+movie.title);
                     i++;
                 }
                 Scanner scanner3= new Scanner(System.in);
@@ -183,6 +187,7 @@ public class KioskUI {
                  make it print (i+1)".\t<- back" or something, make if statement where index+1 = rent()
                 */
             }  
+
         }
         
     }
