@@ -16,6 +16,8 @@ public class Customer {
 
 
     public Customer(String emailIn, String password){
+        transactionHistory = new ArrayList<>();
+        rentedMovies = new ArrayList<>();
         this.email = emailIn;
         this.password = password;
         lateFees = 0;
@@ -38,7 +40,11 @@ public class Customer {
     }
 
     ArrayList<Movie> getRentedMovies(){
-        return rentedMovies;
+        if (!rentedMovies.isEmpty()){
+            return rentedMovies;
+        }else{
+            throw new IllegalArgumentException("no rented movies");
+        }
     }
 
     public String getEmail(){
@@ -52,6 +58,16 @@ public class Customer {
                 return false;
             }
         }
+        if (email.length() < 1){
+            return false;
+        } 
+        if (!email.contains("@")){
+            return false;
+        }
+        if (!email.contains(".")){
+            return false;
+        }
+
         return true;
     }
 
@@ -111,13 +127,19 @@ public class Customer {
 
     void  addToRentedMovies(Movie movie){
 
-
+        rentedMovies.add(movie);
 
     }
 
     void  removeFromRentedMovies(Movie movie){
 
+        rentedMovies.remove(movie);
 
+    }
+
+    void resetLateFees(){
+
+        lateFees = 0;
 
     }
 }

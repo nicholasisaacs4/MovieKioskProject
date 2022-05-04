@@ -14,8 +14,8 @@ public class customerTest {
         Customer customer3 = new Customer("customer@c.com", "customer");
         ArrayList<Customer> customerList = new ArrayList<Customer>();
         customer1.setIDNum(0);
-        customer2.setIDNum(1);
-        customer3.setIDNum(2);
+        customer2.setIDNum(customer1.IDNum);
+        customer3.setIDNum(customer2.IDNum);
 
         customerList.add(customer1);
         customerList.add(customer2);
@@ -66,6 +66,6 @@ public class customerTest {
         assertTrue(Customer.isEmailValid( "a@b.com"));   // valid email address
         assertFalse(Customer.isEmailValid("")); //invalid email, nothing there
         assertFalse(Customer.isEmailValid("a.com")); //invalid email no at sign
-        assertFalse(Customer.isEmailValid("a@com")); //invalid email no at sign
+        assertFalse(Customer.isEmailValid("a@com")); //invalid email no period
     }
 }
