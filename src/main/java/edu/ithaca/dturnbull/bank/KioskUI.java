@@ -39,6 +39,7 @@ public class KioskUI {
 
         Customer newCust = new Customer(email, password);
         customers.add(newCust);
+        current_customer = newCust;
 
     }
 
@@ -77,7 +78,7 @@ public class KioskUI {
         Scanner scanner = new Scanner(System.in);
         String userChoice = scanner.nextLine();
         if(userChoice.equals("1")){
-            rent();
+            //rent();
         }
         else if(userChoice.equals("2")){
             //idk what would go here :P
@@ -90,7 +91,7 @@ public class KioskUI {
     }
 
     //kioskUI
-    public void rent(){
+    public void rent(Library lib){
         System.out.println("Search by:\n1.\ttitle\n2.\tdirector\n3.\tgenre\n4.\tmost popular");
         Scanner scanner = new Scanner(System.in);
         // String userChoice = "1";
@@ -105,9 +106,9 @@ public class KioskUI {
             boolean movieExists = false;
             //makes list of search results
             ArrayList<Movie> movieList = new ArrayList<>();
-            for(Movie movie:Library.allMovies){
-                if(movie.title.equals(title)){
-                    movieList.add(movie);
+            for(int x=0; x<=lib.allMovies.size()-1; x++){
+                if(lib.allMovies.get(x).title.equals(title)){
+                    movieList.add(lib.allMovies.get(x));
                     movieExists = true;
                 }
             }
