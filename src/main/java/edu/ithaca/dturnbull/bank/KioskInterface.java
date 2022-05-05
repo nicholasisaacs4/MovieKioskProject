@@ -50,6 +50,7 @@ public interface KioskInterface {
                 String Password = scannerPassword.nextLine();
                 boolean check = kiosk.login(email, Password);
                 if (check == true){
+                    System.out.println("");
                     System.out.println("Welcome Back" + " " + email);
                     System.out.println("");
                     Functions = true;

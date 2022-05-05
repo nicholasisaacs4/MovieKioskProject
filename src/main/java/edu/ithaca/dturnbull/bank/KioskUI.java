@@ -85,7 +85,9 @@ public class KioskUI {
     }
 
     public void noMovie(){
+        System.out.println(" ");
         System.out.println("No movies with this title are available.\nSearch again?\n1.\tyes\n2.\tno");
+        System.out.println(" ");
         Scanner scanner = new Scanner(System.in);
         String userChoice = scanner.nextLine();
         if(userChoice.equals("1")){
