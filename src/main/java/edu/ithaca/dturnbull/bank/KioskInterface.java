@@ -24,8 +24,12 @@ public interface KioskInterface {
             if (title.equals("new")){
 
                 //new account process 
+                System.out.println(" ");
+                System.out.println(" ");
+                System.out.println(" ");
                 System.out.println("New customer");
                 System.out.println("Please Enter new Email:");
+                System.out.println(" ");
                 Scanner scannerEmail= new Scanner(System.in);
                 String email = scannerEmail.nextLine();
                 System.out.println("Please Enter new Password:");
@@ -53,13 +57,13 @@ public interface KioskInterface {
             
             while(Functions == true){ 
 
-                System.out.println("please choose from options below");
-                System.out.println("________________________________________");
+                System.out.println("please choose from options below:");
+                
 
                 System.out.println("1) Rent");
                 System.out.println("2) Return");
                 System.out.println("3) logout");
-                System.out.println("________________________________________");
+               
 
                 Scanner scannerOptions= new Scanner(System.in);
                 String Option = scannerOptions.nextLine();
