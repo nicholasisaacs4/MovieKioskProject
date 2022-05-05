@@ -19,3 +19,5 @@ Sprint #2: The purpose of sprint #2 is to get the customer and kiosk classes ful
 Review: https://docs.google.com/document/d/14edhbIC_kiIE7wqZD3qngVQD2jgJqZk0Jqe-TkwGWcg/edit
 
 Retrospetive: https://docs.google.com/document/d/1iHf_VsEQ2UBYOeYmlUmHHuu03N_4DbDT6sEwzvhbWkA/edit
+
+Presentation: https://docs.google.com/presentation/d/1QRUKfl5xc_O-NKJRpl0mKwO-u3ueOOdk-lJpZyh0Clc/edit?usp=sharing
