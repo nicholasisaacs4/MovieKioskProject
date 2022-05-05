@@ -17,23 +17,27 @@ public class KioskUI {
         this.test = 1;
     }
 
-    public void login(String email, String password){
+    public boolean login(String email, String password){
 
         if(customers.size() > 0){
-            for(int x= 0; x<= customers.size()-1; x++){
+            for(int x = 0; x<= customers.size()-1; x++){
 
-                if(customers.get(x).email == email){
-                    //email passes 
-                    if (customers.get(x).password == password){
+                if(email.equals(customers.get(x).email) && password.equals(customers.get(x).password)){
+        
+                    current_customer = customers.get(x);
+                    return true;
 
-                        current_customer = customers.get(x);
-                        
-                    }
+                }else{
+                    
+                    return false;
                 }
             }
         }else{
-            System.out.println("login failed ");
+            
+            return false;
         }
+        
+        return false;
     }
 
     public void createAccount(String email, String password){
@@ -63,8 +67,12 @@ public class KioskUI {
 
             for (int x = 0; x<= current_customer.rentedMovies.size()-1; x++){
                if (current_customer.rentedMovies.get(x).IDNum == movieID){
-                 System.out.println("Sucssesfully returned" + " " + current_customer.rentedMovies.get(x).title);
-                 System.out.println("________________________________________");
+                System.out.println("");
+                System.out.println("_____________________________________________");
+                System.out.println("Sucssesfully returned" + " " + current_customer.rentedMovies.get(x).title);
+                System.out.println("Recipt: " + " " +"returned Movie#"+movieID+" on "+LocalDate.now());
+                System.out.println("_____________________________________________");
+                 System.out.println(" ");
                  current_customer.rentedMovies.remove(x);
                  current_customer.addToHistory("returned Movie#"+movieID+" on "+LocalDate.now());
                }
@@ -99,19 +107,22 @@ public class KioskUI {
         this.lib = lib;
         ArrayList<Movie> movieList = new ArrayList<>();
 
+        System.out.println("");
+        System.out.println("_________________________________");
         System.out.println("1) Search");
         System.out.println("2) All movies");
         Scanner scannerUser = new Scanner(System.in);
         String Choice = scannerUser.nextLine();
         
         if (Choice.equals("2")){
-
+            System.out.println(" ");
             for(int x=0; x<=lib.allMovies.size()-1; x++){
                 System.out.println(x+") "+lib.allMovies.get(x).title+ ", "+ lib.allMovies.get(x).director+ ", "+ lib.allMovies.get(x).genre+ ", "+ lib.allMovies.get(x).price);
             }
             Scanner scanner3= new Scanner(System.in);
             //uses index to rent correct movie
-            System.out.println("please select a movie from above");
+            System.out.println(" ");
+            System.out.println("please select a movie from above:");
 
 
             boolean selection = true;
@@ -126,7 +137,8 @@ public class KioskUI {
         }
 
         if (Choice.equals("1")){
-
+            System.out.println(" ");
+            System.out.println("_________________________________");
             System.out.println("Search by:\n1.\ttitle\n2.\tdirector\n3.\tgenre\n4.\tmost popular\n5.\tback");
             Scanner scanner = new Scanner(System.in);
             // String userChoice = "1";
@@ -151,7 +163,16 @@ public class KioskUI {
 
                 //if only one movie matches search, movie is rented
                 if(movieList.size() == 1){
-                    rent(movieList.get(0));
+                    
+                    System.out.println("1) Confirm you want to rent " + movieList.get(0).title+ ", " + movieList.get(0).director);
+                    System.out.println("2) go back");
+                    Scanner scanner3= new Scanner(System.in);
+                    String confirm = scanner3.nextLine();
+
+                    if (confirm.equals("1")){
+                        rent(movieList.get(0));
+                    }
+
                 }
 
                 //if mult. movies in search result, user is asked to select the correct one
@@ -231,8 +252,13 @@ public class KioskUI {
     
     public void rent(Movie movie){
         current_customer.rentedMovies.add(movie);
-        current_customer.addToHistory("rented" + movie.getTitle() + "on" +LocalDate.now()+ "for" + movie.getPrice());
-        System.out.println("thanks for renting" + " " + movie.title + " "+ "returning back to the menu");
+        current_customer.addToHistory("rented" + movie.getTitle() + " on " +LocalDate.now()+ " for " + movie.getPrice());
+        System.out.println(" ");
+        System.out.println("_____________________________________________________________________________ ");
+        System.out.println("thanks for using cool movieKiosk!");
+        System.out.println("heres your recipt:");
+        System.out.println(current_customer.transactionHistory.get(current_customer.transactionHistory.size()-1));
+        System.out.println("_____________________________________________________________________________ ");
         System.out.println(" ");
 
 

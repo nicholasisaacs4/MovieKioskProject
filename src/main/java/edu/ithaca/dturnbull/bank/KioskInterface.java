@@ -25,13 +25,11 @@ public interface KioskInterface {
 
                 //new account process 
                 System.out.println(" ");
-                System.out.println(" ");
-                System.out.println(" ");
                 System.out.println("New customer");
                 System.out.println("Please Enter new Email:");
-                System.out.println(" ");
                 Scanner scannerEmail= new Scanner(System.in);
                 String email = scannerEmail.nextLine();
+                System.out.println("");
                 System.out.println("Please Enter new Password:");
                 Scanner scannerPassword= new Scanner(System.in);
                 String Password = scannerPassword.nextLine();
@@ -42,28 +40,34 @@ public interface KioskInterface {
             if (title.equals("login")){
 
                 //login process
-                System.out.println("new");
+                System.out.println("Login");
+                System.out.println("____________________________");
                 System.out.println("Please Enter Email");
                 Scanner scannerEmail= new Scanner(System.in);
                 String email = scannerEmail.nextLine();
                 System.out.println("Please Enter Password");
                 Scanner scannerPassword= new Scanner(System.in);
                 String Password = scannerPassword.nextLine();
-                kiosk.login(email, Password);
-                System.out.println("hello" + " " + email);
-                Functions = true;
+                boolean check = kiosk.login(email, Password);
+                if (check == true){
+                    System.out.println("Welcome Back" + " " + email);
+                    System.out.println("");
+                    Functions = true;
+                }else{
+                    Functions = false;
+                    System.out.println("Login failed please try again");
+                    System.out.println("");
+                }
             }
 
             
             while(Functions == true){ 
 
+                System.out.println("________________________________________");
                 System.out.println("please choose from options below:");
-                
-
                 System.out.println("1) Rent");
                 System.out.println("2) Return");
                 System.out.println("3) logout");
-               
 
                 Scanner scannerOptions= new Scanner(System.in);
                 String Option = scannerOptions.nextLine();
@@ -98,7 +102,6 @@ public interface KioskInterface {
 
                 }
                 if (Option.equals("3")){
-
                     System.out.println("Logged out");
                     Functions = false;
                     
