@@ -32,7 +32,7 @@ public class KioskUI {
                 }
             }
         }else{
-            throw new IllegalArgumentException("login failed");
+            System.out.println("login failed ");
         }
     }
 
@@ -63,6 +63,8 @@ public class KioskUI {
 
             for (int x = 0; x<= current_customer.rentedMovies.size()-1; x++){
                if (current_customer.rentedMovies.get(x).IDNum == movieID){
+                 System.out.println("Sucssesfully returned" + " " + current_customer.rentedMovies.get(x).title);
+                 System.out.println("________________________________________");
                  current_customer.rentedMovies.remove(x);
                  current_customer.addToHistory("returned Movie#"+movieID+" on "+LocalDate.now());
                }
@@ -114,7 +116,7 @@ public class KioskUI {
 
             boolean selection = true;
             while(selection == true){
-                int select = Integer.parseInt(scanner3.nextLine()) -1;
+                int select = Integer.parseInt(scanner3.nextLine());
                 if (select <= lib.allMovies.size()-1){
                     rent(lib.allMovies.get(select));
                     selection = false;

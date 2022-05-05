@@ -113,5 +113,4 @@ public class Library {
         Movie movie25 = new Movie("A Nightmare on Elm Street ", "Wes Craven", "Horror");
         addMovie(movie25);
     }
-
 }

@@ -17,7 +17,7 @@ public interface KioskInterface {
         while(true){
 
             System.out.println("Welcome");
-            System.out.println("Press enter 'login' to login or enter 'new' for new customer");
+            System.out.println("Press enter 'login' to login or enter 'new' for new customer:");
             Scanner scanner2= new Scanner(System.in);
             String title = scanner2.nextLine();
 
@@ -25,10 +25,10 @@ public interface KioskInterface {
 
                 //new account process 
                 System.out.println("New customer");
-                System.out.println("Please Enter new Email");
+                System.out.println("Please Enter new Email:");
                 Scanner scannerEmail= new Scanner(System.in);
                 String email = scannerEmail.nextLine();
-                System.out.println("Please Enter new Password");
+                System.out.println("Please Enter new Password:");
                 Scanner scannerPassword= new Scanner(System.in);
                 String Password = scannerPassword.nextLine();
                 kiosk.createAccount(email, Password);
@@ -54,12 +54,13 @@ public interface KioskInterface {
             while(Functions == true){ 
 
                 System.out.println("please choose from options below");
+                System.out.println("________________________________________");
 
                 System.out.println("1) Rent");
                 System.out.println("2) Return");
                 System.out.println("3) logout");
+                System.out.println("________________________________________");
 
-                
                 Scanner scannerOptions= new Scanner(System.in);
                 String Option = scannerOptions.nextLine();
 
@@ -67,7 +68,6 @@ public interface KioskInterface {
 
                     //rent movie process 
                     kiosk.rent(lib);
-
                 }
 
                 if (Option.equals("2")){
@@ -89,13 +89,8 @@ public interface KioskInterface {
                         kiosk.returnMovie(ID);
 
                     }else{
-                        
                         System.out.println("you have no rented movies, returning to the main screen");
-                        Functions = false;
-
                     }
-
-        
 
                 }
                 if (Option.equals("3")){
